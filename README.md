@@ -1,2 +1,2 @@
-# courierManagementSystem
-A complete end-to-end Courier Management System using Flutter and Firebase
+# Courier Management System
+A complete end-to-end Courier Management Software using Flutter and Firebase
