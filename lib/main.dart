@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Project Import
+import 'shared/common.dart';
+import 'modules/customer/welcome_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -9,36 +13,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Courier Way',
+      title: companyName,
       theme: ThemeData(
         primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Courier Way'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Text(
-          'An online courier management system',
+        primaryTextTheme: TextTheme(
+          headline6: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
+      // home: WelcomePage(),
+
+      debugShowCheckedModeBanner: false,
+      routes: {
+        "/": (ctx) => WelcomePage(),
+      },
     );
   }
 }
