@@ -1,8 +1,12 @@
+import 'package:couriermanagementsystem/core/screens/aboutus.dart';
+import 'package:couriermanagementsystem/modules/customer/features/tracking_page/screens/courier_status_page.dart';
+import 'package:couriermanagementsystem/modules/customer/features/tracking_page/screens/create_shipment_page.dart';
+import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 /// Project Import
 import 'shared/common.dart';
-import 'modules/customer/welcome_page.dart';
+import 'modules/customer/features/tracking_page/screens/welcome_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,23 +16,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    /// ScreenUtil for Responsive UI
+
     return MaterialApp(
       title: companyName,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        primaryTextTheme: TextTheme(
-          headline6: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
+      theme: appTheme,
       // home: WelcomePage(),
 
       debugShowCheckedModeBanner: false,
       routes: {
         "/": (ctx) => WelcomePage(),
+        Aboutus.routeName: (ctx) => Aboutus(),
+        CreateShipment.routeName: (ctx) => CreateShipment(),
+        CourierStatus.routeName: (ctx) => CourierStatus(),
       },
     );
   }

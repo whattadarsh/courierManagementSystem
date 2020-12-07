@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "278848568588",
+    "firebase_url": "https://courierway-e8b83.firebaseio.com",
+    "project_id": "courierway-e8b83",
+    "storage_bucket": "courierway-e8b83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278848568588:android:f50ac2f6ddc074ca1c5d29",
+        "android_client_info": {
+          "package_name": "com.adarshApps.couriermanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278848568588-g5afdhst7g5vpkjf8n72148mgqmjh1qs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPnhQEsLyQVnbu4x72MGyVng3bNWq4FrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278848568588-g5afdhst7g5vpkjf8n72148mgqmjh1qs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

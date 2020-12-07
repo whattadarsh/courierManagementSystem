@@ -48,13 +48,20 @@
 
 - With Limited Access
 - Users can check status of their product after placing orders.
+  TODOs:
 - [ ] Track Orders (With Reciept No.)
-  - [ ] Create Welcome Page (Welcome User)
-  - [ ] Tracking Page (Write at home page)
-  - [ ] Signing option at bottom to place orders
+  - [x] Create Welcome Page (Welcome User)
+  - [x] Tracking Page (Write at home page)
+  - [x] Signing option at bottom to place orders
+  - [ ] Create page for placing courier order
+  - [ ] forms
+  - [ ] Create drawer
+    - [ ] Add profile option
+    - [ ] Shipment History
+    - [ ] Contact us
+    - [ ] Onboarding Page or Deails page of Facilities Provided by us
   - [ ] Auth Page (Google)
   - [ ] Create User in Firebase
-  - [ ] Create page for placing courier order
-  - [ ] (Add location feature (copy form urban culture))
+  <!-- - [ ] (Add location feature (copy form urban culture)) -->
 - [ ] Create Order (Sign in Required)
 - [ ] Add account details()

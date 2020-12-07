@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TrackCourier extends StatefulWidget {
-  static const routeName = "/TrackCourier";
+class CreateShipment extends StatefulWidget {
+  static const routeName = "/CreateShipment";
   @override
-  _TrackCourierState createState() => _TrackCourierState();
+  _CreateShipmentState createState() => _CreateShipmentState();
 }
 
-class _TrackCourierState extends State<TrackCourier> {
+class _CreateShipmentState extends State<CreateShipment> {
   @override
   Widget build(BuildContext context) {
     ///ScreenUtil for Responsive UI
@@ -23,11 +23,11 @@ class _TrackCourierState extends State<TrackCourier> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("TrackCourier"),
+        title: Text("CreateShipment"),
       ),
       body: Container(
         child: Center(
-          child: Text("TrackCourier"),
+          child: Text("CreateShipment"),
         ),
       ),
     );
