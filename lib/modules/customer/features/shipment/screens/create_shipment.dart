@@ -59,7 +59,7 @@ class _CreateShipmentState extends State<CreateShipment> {
                 /// Product Details
                 _productDetailsCard(),
                 SizedBox(
-                  height: 5.h,
+                  height: 10.h,
                 ),
                 createOrderButton(),
               ],
@@ -72,28 +72,28 @@ class _CreateShipmentState extends State<CreateShipment> {
 
   Container createOrderButton() {
     return Container(
-                margin: EdgeInsets.all(10.w),
-                width: double.infinity,
-                child: RaisedButton(
-                  color: appThemeColor1,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(30.w)),
-                  child: Container(
-                    padding: EdgeInsets.all(15.w),
-                    child: Text(
-                      "Create an Shipment",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.sp,
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    //TODO: Implement This
-                    print("Courier Booked!!");
-                  },
-                ),
-              );
+      margin: EdgeInsets.all(10.w),
+      width: double.infinity,
+      child: RaisedButton(
+        color: appThemeColor1,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusDirectional.circular(30.w)),
+        child: Container(
+          padding: EdgeInsets.all(15.w),
+          child: Text(
+            "Create an Shipment",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.sp,
+            ),
+          ),
+        ),
+        onPressed: () {
+          //TODO: Implement This
+          print("Courier Booked!!");
+        },
+      ),
+    );
   }
 
   Widget addressesCards() {
