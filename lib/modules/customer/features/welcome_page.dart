@@ -1,3 +1,4 @@
+import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/drawer.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -135,9 +136,7 @@ class WelcomePage extends StatelessWidget {
     );
     return Scaffold(
       key: scaffoldKey,
-      drawer: Container(
-        child: Text("Drawer"),
-      ),
+      drawer: DrawerWidget(),
       // Disable opening the drawer with a swipe gesture.
       // drawerEnableOpenDragGesture: false,
       body: _body,

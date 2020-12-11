@@ -57,8 +57,8 @@
   - [x] Create Welcome Page (Welcome User)
   - [x] Tracking Page (Write at home page)
   - [x] Signing option at bottom to place orders
-  - [ ] Create page for placing courier order
-  - [ ] forms
+  - [x] Create page for placing courier order
+  - [x] forms
   - [ ] Create drawer
     - [ ] Add profile option
     - [ ] Shipment History
@@ -66,5 +66,5 @@
   - [ ] Auth Page (Google)
   - [ ] Create User in Firebase
   <!-- - [ ] (Add location feature (copy form urban culture)) -->
-- [ ] Create Order (Sign in Required)
+- [x] Create Order (Sign in Required)
 - [ ] Add account details()
