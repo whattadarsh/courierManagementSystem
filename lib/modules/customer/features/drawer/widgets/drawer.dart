@@ -1,6 +1,8 @@
 import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
 import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -28,35 +30,63 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         children: [
           Expanded(
             flex: 1,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.75,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/6447.jpg"),
-                      fit: BoxFit.cover),
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    text: "Courier",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 25.sp,
-                      color: Theme.of(context).primaryColor,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: DrawerHeader(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/6447.jpg"),
+                          fit: BoxFit.cover),
                     ),
-                    children: [
-                      TextSpan(
-                        text: "Way",
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Courier",
                         style: TextStyle(
-                          fontSize: 25.sp,
                           fontWeight: FontWeight.w700,
-                          color: appThemeColor1,
+                          fontSize: 25.sp,
+                          color: Theme.of(context).primaryColor,
                         ),
+                        children: [
+                          TextSpan(
+                            text: "Way",
+                            style: TextStyle(
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.w700,
+                              color: appThemeColor1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// Signup Invitation
+                FlatButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {
+                    print("navigate to Signup Page");
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Sign up/Login now",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 15.sp,
+                        ),
+                      ),
+                      Icon(
+                        Icons.chevron_right,
                       ),
                     ],
                   ),
                 ),
-              ),
+              ],
             ),
           ),
           Expanded(
@@ -81,8 +111,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     size: 15.sp,
                   ),
                   onTap: () {
-                    Navigator.of(context)
-                        .popAndPushNamed(selectedOption["navigateTo"]);
+                    if (selectedOption["title"] == 'Contact Us') {
+                      _sendMail();
+                    } else {
+                      Navigator.of(context)
+                          .popAndPushNamed(selectedOption["navigateTo"]);
+                    }
                   },
                 );
               },
@@ -92,5 +126,17 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         ],
       ),
     );
+  }
+
+  //Contact us
+  _sendMail() async {
+    // Android and iOS
+    const url =
+        'mailto:b180001@nitsikkim.ac.in?subject=Feedback%20for%20CourierWay&body=Hello%20Adarsh,%0D%0A';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

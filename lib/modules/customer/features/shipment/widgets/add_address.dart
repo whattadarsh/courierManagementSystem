@@ -11,6 +11,9 @@ class AddAddress extends StatefulWidget {
 }
 
 class _AddAddressState extends State<AddAddress> {
+  var spacer = SizedBox(
+    height: 10,
+  );
   @override
   Widget build(BuildContext context) {
     ///ScreenUtil for Responsive UI
@@ -21,6 +24,103 @@ class _AddAddressState extends State<AddAddress> {
       height: 850.9090909090909,
       allowFontScaling: true,
     );
+    Widget textField(
+        {@required String field, TextEditingController controller}) {
+      return TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: field,
+          contentPadding: EdgeInsets.zero,
+          isDense: true,
+        ),
+        cursorColor: Theme.of(context).primaryColor,
+      );
+    }
+
+    Widget bottomSheet = Container(
+      padding: EdgeInsets.all(15.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.wysiwyg_outlined),
+              //Horizontal Space
+              SizedBox(
+                width: 5.w,
+              ),
+              Text(
+                "Add Address",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),
+              ),
+            ],
+          ),
+          // Vertical Space
+          spacer,
+          textField(
+            field: "Seller Name*",
+          ), //1
+          // Vertical Space
+          spacer,
+          textField(
+            field: "Phone Number*",
+          ), //2
+          // Vertical Space
+          spacer,
+          textField(
+            field: "House No.*",
+          ), //3
+          // Vertical Space
+          spacer,
+          textField(
+            field: "Street No. and Landmark*",
+          ), //4
+          // Vertical Space
+          spacer,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: textField(
+                  field: "Pincode*",
+                ),
+              ), //5
+              //Horizontal Space
+              SizedBox(
+                width: 10.w,
+              ),
+              Flexible(
+                child: textField(
+                  field: "City*",
+                ),
+              ), //6
+            ],
+          ),
+          // Vertical Space
+          spacer,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: textField(
+                  field: "State*",
+                ),
+              ), //7
+              //Horizontal Space
+              SizedBox(
+                width: 10.w,
+              ),
+              Flexible(
+                child: textField(
+                  field: "Country*",
+                ),
+              ), //8
+            ],
+          ),
+        ],
+      ),
+    );
+
     // showModalBottomSheet(
     //   context: context,
     //   backgroundColor: Colors.white,

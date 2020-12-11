@@ -1,5 +1,4 @@
 import 'package:couriermanagementsystem/core/screens/aboutus.dart';
-import 'package:couriermanagementsystem/modules/customer/features/shipment/screens/create_shipment.dart';
 import 'package:flutter/material.dart';
 
 List<Map<String, Object>> menuData = [
