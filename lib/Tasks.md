@@ -6,6 +6,10 @@
 2. Offices/Branches
 3. Customers
 
+### Common
+
+- [ ] Onboarding Page or Deails page of Facilities Provided by us
+
 ### ADMIN
 
 - Login
@@ -59,7 +63,6 @@
     - [ ] Add profile option
     - [ ] Shipment History
     - [ ] Contact us
-    - [ ] Onboarding Page or Deails page of Facilities Provided by us
   - [ ] Auth Page (Google)
   - [ ] Create User in Firebase
   <!-- - [ ] (Add location feature (copy form urban culture)) -->

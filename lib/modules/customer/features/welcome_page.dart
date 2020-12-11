@@ -2,8 +2,8 @@ import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../widgets/more_on_courierway.dart';
-import '../widgets/tracking_widget.dart';
+import 'tracking_page/widgets/more_on_courierway.dart';
+import 'tracking_page/widgets/tracking_widget.dart';
 
 class WelcomePage extends StatelessWidget {
   @override

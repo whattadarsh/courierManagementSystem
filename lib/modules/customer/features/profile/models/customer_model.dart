@@ -18,18 +18,6 @@ class Customer {
     this.userAddresses,
   });
 
-  Map<String, dynamic> toJson() {
-    var userAddressesToJson = userAddresses != null
-        ? userAddresses.map((address) => address.toJson()).toList()
-        : [];
-    return {
-      "name": name,
-      "email": email,
-      "phoneNumber": phoneNumber,
-      "userAddresses": userAddressesToJson,
-    };
-  }
-
   void setFields({String name, String email, String phoneNumber}) {
     this.name = name;
     this.email = email;
@@ -59,5 +47,17 @@ class Customer {
       phoneNumber: parsedJson["phoneNumber"],
       userAddresses: userAddresses,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    var userAddressesToJson = userAddresses != null
+        ? userAddresses.map((address) => address.toJson()).toList()
+        : [];
+    return {
+      "name": name,
+      "email": email,
+      "phoneNumber": phoneNumber,
+      "userAddresses": userAddressesToJson,
+    };
   }
 }
