@@ -67,7 +67,7 @@ class _TrackCourierState extends State<TrackCourier> {
           ),
           child: Container(
             height: 250.h,
-            width: double.maxFinite,
+            // width: double.maxFinite,
             child: ShipmentNumberWidget(),
           ),
         ),

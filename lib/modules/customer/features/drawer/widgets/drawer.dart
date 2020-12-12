@@ -1,7 +1,7 @@
 import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
+import 'package:couriermanagementsystem/modules/customer/features/drawer/services/contact_us.dart';
 import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -112,7 +112,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   ),
                   onTap: () {
                     if (selectedOption["title"] == 'Contact Us') {
-                      _sendMail();
+                      contactUs();
                     } else {
                       Navigator.of(context)
                           .popAndPushNamed(selectedOption["navigateTo"]);
@@ -126,17 +126,5 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         ],
       ),
     );
-  }
-
-  //Contact us
-  _sendMail() async {
-    // Android and iOS
-    const url =
-        'mailto:b180001@nitsikkim.ac.in?subject=Feedback%20for%20CourierWay&body=Hello%20Adarsh,%0D%0A';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }

@@ -74,11 +74,8 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
                 ),
               ),
             ),
-            Flexible(
-              fit: FlexFit.loose,
-              child: SizedBox(
-                height: 10.h,
-              ),
+            SizedBox(
+              height: 10.h,
             ),
             TextFormField(
               controller: shipmentNoController,
@@ -86,15 +83,11 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
               decoration: InputDecoration(
                 labelText: "Tracking Id",
                 border: OutlineInputBorder(),
-                hintText: "xSaowAnsa1312AA",
-                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                hintText: "e.g. xSaowAnsa1312AA",
               ),
             ),
-            Flexible(
-              fit: FlexFit.loose,
-              child: SizedBox(
-                height: 10.h,
-              ),
+            SizedBox(
+              height: 10.h,
             ),
             ElevatedButton(
               child: Icon(
@@ -114,11 +107,8 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
                 shipmentNoController.clear();
               },
             ),
-            Flexible(
-              fit: FlexFit.loose,
-              child: SizedBox(
-                height: 10.h,
-              ),
+            SizedBox(
+              height: 10.h,
             ),
           ],
         ),

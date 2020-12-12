@@ -59,10 +59,10 @@
   - [x] Signing option at bottom to place orders
   - [x] Create page for placing courier order
   - [x] forms
-  - [ ] Create drawer
-    - [ ] Add profile option
-    - [ ] Shipment History
-    - [ ] Contact us
+  - [x] Create drawer
+    - [x] Add profile option
+    - [x] Shipment History
+    - [x] Contact us
   - [ ] Auth Page (Google)
   - [ ] Create User in Firebase
   <!-- - [ ] (Add location feature (copy form urban culture)) -->
