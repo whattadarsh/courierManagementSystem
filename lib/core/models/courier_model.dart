@@ -1,5 +1,5 @@
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/employee/models/employee.dart';
+import 'package:couriermanagementsystem/modules/employee/models/employee_model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:firebase/firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +10,8 @@ enum courierStatus {
   Dispathced,
   Shipped,
   onTheWay,
-  Delivered
+  Delivered,
+  Rejected,
 }
 enum courierType { Document, Nondocument }
 

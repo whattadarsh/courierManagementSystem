@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
 
 class Employee {
-  String uid;
+  String eid;
   String name;
   String email;
   String phoneNumber;
@@ -11,13 +11,13 @@ class Employee {
 
   ///Constructur
   Employee({
-    this.uid,
+    this.eid,
     @required this.name,
     @required this.email,
     @required this.phoneNumber,
     this.assignedCouriers,
   });
-
+//TODO: Show a form to fill these fields after login
   void setFields({String name, String email, String phoneNumber}) {
     this.name = name;
     this.email = email;
@@ -42,7 +42,7 @@ class Employee {
             .toList()
         : [];
     return Employee(
-      uid: _snapshot.id,
+      eid: _snapshot.id,
       name: _parsedJson["name"],
       email: _parsedJson["email"],
       phoneNumber: _parsedJson["phoneNumber"],
