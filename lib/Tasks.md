@@ -8,7 +8,7 @@
 
 ### Common
 
-- [ ] Onboarding Page or Deails page of Facilities Provided by us
+- [X] Onboarding Page or Deails page of Facilities Provided by us
 
 ### ADMIN
 

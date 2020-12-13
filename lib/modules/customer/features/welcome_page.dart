@@ -7,6 +7,7 @@ import 'tracking_page/widgets/more_on_courierway.dart';
 import 'tracking_page/widgets/tracking_widget.dart';
 
 class WelcomePage extends StatelessWidget {
+  static const routeName = "/WelcomePage";
   @override
   Widget build(BuildContext context) {
     var scaffoldKey = GlobalKey<ScaffoldState>();

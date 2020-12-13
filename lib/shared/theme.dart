@@ -22,6 +22,12 @@ ThemeData appTheme = ThemeData(
   primaryTextTheme: TextTheme(
     headline6: TextStyle(
       color: Colors.black,
+      fontFamily: 'Raleway',
+      fontWeight: FontWeight.w700,
+    ),
+    bodyText1: TextStyle(
+      color: Colors.black,
+      fontFamily: 'Roboto Slab',
       fontWeight: FontWeight.w700,
     ),
   ),
