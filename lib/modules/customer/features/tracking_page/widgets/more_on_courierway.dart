@@ -15,8 +15,10 @@ class _MoreOnCourierWayState extends State<MoreOnCourierWay> {
     /// ScreenUtil for Responsive UI
     ScreenUtil.init(
       context,
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     return Column(

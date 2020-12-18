@@ -53,7 +53,12 @@ class Address {
 
   /// One Line Address
   String addressString() {
-    return this.houseNoAndLandmark +
+    return this.name +
+        "\n" +
+        "Phone No.: " +
+        this.mobile +
+        "\n" +
+        this.houseNoAndLandmark +
         ", " +
         this.city +
         ", " +

@@ -1,36 +1,60 @@
-import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/drawer.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/modules/admin/features/home/widgets/couriers_list.dart';
+import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
+import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/cust_drawer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
 
-import 'tracking_page/widgets/more_on_courierway.dart';
-import 'tracking_page/widgets/tracking_widget.dart';
+class AdminWelcomePage extends StatefulWidget {
+  static const routeName = "/AdminWelcomePage";
 
-class WelcomePage extends StatelessWidget {
-  static const routeName = "/WelcomePage";
+  @override
+  _AdminWelcomePageState createState() => _AdminWelcomePageState();
+}
+
+class _AdminWelcomePageState extends State<AdminWelcomePage> {
+  GlobalKey<ScaffoldState> scaffoldKey;
+  String role;
+  @override
+  void initState() {
+    scaffoldKey = new GlobalKey<ScaffoldState>();
+    role = "";
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+    //   var user = FirebaseAuth.instance.currentUser;
+    //   Provider.of<AdminInfoServices>(context, listen: false)
+    //       .setUserId(userId: user.uid, email: user.email, context: context);
+    //
+    // });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var scaffoldKey = GlobalKey<ScaffoldState>();
+    // Map<String, String> args = ModalRoute.of(context).settings.arguments;
+    // role = args["role"] ?? "";
 
     /// ScreenUtil for Responsive UI
     ScreenUtil.init(
       context,
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     var _greetingsToUser = Container(
       padding: EdgeInsets.all(8.w),
       child: RichText(
         text: TextSpan(
-          text: "Hey, ",
+          text: "Hey ",
           style: TextStyle(
             fontSize: 25.sp,
             color: Colors.black,
           ),
           children: [
             TextSpan(
-              text: "user!", //TODO: Change with customer name if logged in
+              text: "admin!", //TODO: Change with customer name if logged in
               style: TextStyle(
                 fontSize: 25.sp,
                 fontWeight: FontWeight.w700,
@@ -49,15 +73,10 @@ class WelcomePage extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              // Colors.teal,
               Color(0xff3feee6),
               Colors.teal[300],
               Colors.teal[100],
               Colors.teal[50],
-              // Color(0xff3feee6),
-              // Color(0xff55bcc9),
-              // Color(0xffcafafe),
-              // Colors.white,
             ],
             begin: Alignment.topCenter,
             end: FractionalOffset.bottomCenter,
@@ -97,38 +116,20 @@ class WelcomePage extends StatelessWidget {
 
               /// Courier Tracking Widget
               TrackCourier(),
+
+              /// Show Available Couriers
               //Vertical Space
               SizedBox(
                 height: 10.h,
               ),
+              //Show Employees
+              EmployeeList(),
 
-              /// Widget to show more features of the app
-              MoreOnCourierWay(),
+              /// Couriers List
+              CouriersList(),
               //Vertical Space
               SizedBox(
                 height: 10.h,
-              ),
-
-              /// Signup Invitation
-              FlatButton(
-                padding: EdgeInsets.all(10.w),
-                onPressed: () {
-                  print("navigate to Signup Page");
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "Sign up /Login to $companyName",
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                    Icon(
-                      Icons.chevron_right,
-                    ),
-                  ],
-                ),
               ),
             ],
           ),

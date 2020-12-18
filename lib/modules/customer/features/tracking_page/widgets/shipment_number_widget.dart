@@ -1,6 +1,9 @@
-import 'package:couriermanagementsystem/modules/customer/features/tracking_page/screens/courier_status_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
 
 class ShipmentNumberWidget extends StatefulWidget {
   @override
@@ -14,7 +17,7 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
   @override
   void initState() {
     super.initState();
-    _formKey = GlobalKey<FormState>();
+    _formKey = new GlobalKey<FormState>();
     shipmentNoController = TextEditingController();
   }
 
@@ -29,8 +32,10 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
     ///ScreenUtil for Responsive UI
     ScreenUtil.init(
       context,
-      width: 360,
-      height: 720,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
 
@@ -95,15 +100,166 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
                 color: Colors.white,
               ),
               onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  _formKey.currentState.save();
-                  print("Requesting server for the courier status details..." +
-                      shipmentNoController.text.toString());
-                  Navigator.of(context).pushNamed(
-                    CourierStatus.routeName,
-                    arguments: shipmentNoController.text.toString(),
-                  );
-                }
+                Courier c = dummycouriers[0];
+                // if (_formKey.currentState.validate()) {
+                //   _formKey.currentState.save();
+                print("Requesting server for the courier status details..." +
+                    shipmentNoController.text.toString());
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.h),
+                      topRight: Radius.circular(15.h),
+                    ),
+                  ),
+                  builder: (context) {
+                    return SingleChildScrollView(
+                      physics: AlwaysScrollableScrollPhysics(
+                          parent: BouncingScrollPhysics()),
+                      child: Container(
+                        padding: EdgeInsets.all(10.w),
+                        height: 300.h,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            //Vertical Space
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Courier Status of id: xSaowAnsa1312AA", //CHECKIT
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontFamily: 'Raleway',
+                                    color: Colors.black,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            //Vertical Space
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Container(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: FittedBox(
+                                        fit: BoxFit.fitWidth,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Product Name: " + c.courierName,
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontStyle: FontStyle.italic,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      )),
+                                  //Vertical Space
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: FittedBox(
+                                          fit: BoxFit.fitWidth,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Origin: ${c.origin.pincode}",
+                                            style: TextStyle(
+                                              fontSize: 20.sp,
+                                            ),
+                                          ))),
+                                  //Vertical Space
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.centerRight,
+                                      child: FittedBox(
+                                        fit: BoxFit.fitWidth,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Destination: ${c.destination.pincode}",
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                          ),
+                                        ),
+                                      )),
+                                  //Vertical Space
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "current status: " +
+                                        courierStatus.Dispathced.toString()
+                                            .split('.')
+                                            .last,
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      color: Colors.redAccent,
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                )),
+                            Container(
+                              margin: EdgeInsets.all(10.w),
+                              // width: double.infinity,
+                              child: RaisedButton(
+                                color: Theme.of(context).primaryColor,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadiusDirectional.circular(30.w)),
+                                child: Container(
+                                  padding: EdgeInsets.all(15.w),
+                                  child: Text(
+                                    "Ok",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20.sp,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  print("Getting back");
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+
+                // Navigator.of(context).pushNamed(
+                //   CourierStatus.routeName,
+                //   arguments: shipmentNoController.text.toString(),
+                //   // );
+                // }
                 shipmentNoController.clear();
               },
             ),

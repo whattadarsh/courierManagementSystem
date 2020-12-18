@@ -1,4 +1,4 @@
-import 'package:firebase/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
 
@@ -15,7 +15,7 @@ class Employee {
     @required this.name,
     @required this.email,
     @required this.phoneNumber,
-    this.assignedCouriers,
+    this.assignedCouriers = const [],
   });
 //TODO: Show a form to fill these fields after login
   void setFields({String name, String email, String phoneNumber}) {

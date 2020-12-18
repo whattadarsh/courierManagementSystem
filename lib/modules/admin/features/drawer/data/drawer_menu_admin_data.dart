@@ -1,4 +1,5 @@
 import 'package:couriermanagementsystem/core/screens/aboutus.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/my_employees.dart';
 import 'package:flutter/material.dart';
 
 List<Map<String, Object>> menuData = [
@@ -9,7 +10,7 @@ List<Map<String, Object>> menuData = [
   },
   {
     'icon': Icons.analytics_outlined,
-    'navigateTo': Aboutus.routeName,
+    'navigateTo': AvailableEmployees.routeName,
     'title': 'Your employees',
   },
   {

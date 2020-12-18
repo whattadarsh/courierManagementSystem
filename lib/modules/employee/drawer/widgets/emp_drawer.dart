@@ -1,28 +1,26 @@
-import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
-import 'package:couriermanagementsystem/modules/customer/features/drawer/services/contact_us.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
-
+import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
+import 'package:couriermanagementsystem/shared/contact_us.dart';
+import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
 
-class DrawerWidget extends StatefulWidget {
-  static const routeName = "/DrawerWidget";
+class EmpDrawerWidget extends StatefulWidget {
+  static const routeName = "/EmpDrawerWidget";
   @override
-  _DrawerWidgetState createState() => _DrawerWidgetState();
+  _EmpDrawerWidgetState createState() => _EmpDrawerWidgetState();
 }
 
-class _DrawerWidgetState extends State<DrawerWidget> {
+class _EmpDrawerWidgetState extends State<EmpDrawerWidget> {
   @override
   Widget build(BuildContext context) {
     ///ScreenUtil for Responsive UI
     ScreenUtil.init(
       context,
-      //For Redmi Note 9
-      width: 392.72727272727275,
-      height: 850.9090909090909,
-      //For Redmi Note 7 pro
-      //width: 360,
-      //height: 720,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     return Drawer(
@@ -68,13 +66,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 FlatButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
-                    print("navigate to Signup Page");
+                    print("navigate to Onboarding");
+                    AuthService().signout(context);
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "Sign up/Login now",
+                        "Sign out",
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           fontSize: 15.sp,

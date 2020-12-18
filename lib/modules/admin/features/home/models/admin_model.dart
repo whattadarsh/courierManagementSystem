@@ -1,8 +1,7 @@
-import 'package:firebase/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
-
-import 'package:couriermanagementsystem/modules/employee/models/employee_model.dart';
 
 class Admin {
   String aid;
@@ -21,7 +20,7 @@ class Admin {
     @required this.phoneNumber,
     this.approvedCouriers,
     this.availableCouriers,
-    this.employees,
+    this.employees = const [],
   });
   //TODO: Show a form to fill these fields after login
   void setFields({String name, String email, String phoneNumber}) {

@@ -16,8 +16,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     ScreenUtil.init(
       context,
       //For Redmi Note 9
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     return SafeArea(

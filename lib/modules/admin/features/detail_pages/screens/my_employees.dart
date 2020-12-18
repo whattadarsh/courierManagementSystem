@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Aboutus extends StatefulWidget {
-  static const routeName = "/Aboutus";
+class AvailableEmployees extends StatefulWidget {
+  static const routeName = "/AvailableEmployees";
   @override
-  _AboutusState createState() => _AboutusState();
+  _AvailableEmployeesState createState() => _AvailableEmployeesState();
 }
 
-class _AboutusState extends State<Aboutus> {
+class _AvailableEmployeesState extends State<AvailableEmployees> {
   @override
   Widget build(BuildContext context) {
     ///ScreenUtil for Responsive UI
@@ -25,14 +25,11 @@ class _AboutusState extends State<Aboutus> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("About us"),
+        title: Text("AvailableEmployees"),
       ),
       body: Container(
         child: Center(
-          child: Text(
-            "Created by Adarsh Srivastava (B180001CS)",
-            style: Theme.of(context).textTheme.headline6,
-          ),
+          child: Text("AvailableEmployees"),
         ),
       ),
     );

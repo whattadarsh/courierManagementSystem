@@ -1,5 +1,4 @@
-import 'package:firebase/firestore.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'address_model.dart';
 
 class Customer {
@@ -12,12 +11,12 @@ class Customer {
   ///Constructur
   Customer({
     this.uid,
-    @required this.name,
-    @required this.email,
-    @required this.phoneNumber,
+    this.name,
+    this.email,
+    this.phoneNumber,
     this.userAddresses,
   });
-  //TODO: Show a form to fill these fields after login
+  // TODO: Show a form to fill these fields after login
   void setFields({String name, String email, String phoneNumber}) {
     this.name = name;
     this.email = email;

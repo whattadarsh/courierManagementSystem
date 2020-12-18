@@ -20,8 +20,10 @@ class _AddAddressState extends State<AddAddress> {
     ScreenUtil.init(
       context,
       //For Redmi Note 9
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     showModalBottomSheet(
@@ -123,8 +125,10 @@ class _AddAddressState extends State<AddAddress> {
     ScreenUtil.init(
       context,
       //For Redmi Note 9
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     Widget textField(

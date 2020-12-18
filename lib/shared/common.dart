@@ -5,10 +5,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 const String companyName = "CourierWay";
 
 /// Widgets
+Row get dashedDivider => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(
+        40,
+        (index) => Container(
+          width: 3,
+          height: 2,
+          color: Colors.blueGrey.withOpacity(0.3),
+        ),
+      ),
+    );
 
 const SizedBox spacer = const SizedBox(
   height: 15,
 );
+
+Widget dividingLine() {
+  return Divider(
+    color: Colors.black12,
+    thickness: 2,
+  );
+}
 
 class LoadingWidget extends StatefulWidget {
   @override
@@ -45,8 +63,10 @@ class _LoadingWidgetState extends State<LoadingWidget>
     ScreenUtil.init(
       context,
       //For Redmi Note 9
-      width: 392.72727272727275,
-      height: 850.9090909090909,
+      designSize: Size(
+        392.72727272727275,
+        850.9090909090909,
+      ),
       allowFontScaling: true,
     );
     return Container(
