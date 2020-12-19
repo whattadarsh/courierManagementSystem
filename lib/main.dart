@@ -1,10 +1,12 @@
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/courier_details.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/my_employees.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_employees.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'modules/admin/features/detail_pages/screens/assigned_courier.dart';
+import 'modules/admin/features/detail_pages/screens/available_couriers.dart';
 import 'modules/admin/features/detail_pages/screens/employee_details.dart';
 import 'modules/admin/features/home/screens/admin_welcome_page.dart';
 
@@ -100,8 +102,8 @@ class MyApp extends StatelessWidget {
           EmployeeDetails.routeName: (ctx) => EmployeeDetails(),
           CreateShipment.routeName: (ctx) => CreateShipment(),
           AvailableEmployees.routeName: (ctx) => AvailableEmployees(),
-          // AvailableCouriers.routeName: (ctx) => AvailableCouriers(),
-          // AssignedCouriersByAdmin.routeName: (ctx) => AssignedCouriersByAdmin(),
+          AvailableCouriers.routeName: (ctx) => AvailableCouriers(),
+          AssignedCouriersByAdmin.routeName: (ctx) => AssignedCouriersByAdmin(),
           // AssignedCouriers.routeName: (ctx) => AssignedCouriers(),
         },
         onUnknownRoute: (settings) => MaterialPageRoute(

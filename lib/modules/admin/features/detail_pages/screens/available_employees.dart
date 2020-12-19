@@ -1,3 +1,4 @@
+import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,9 +28,12 @@ class _AvailableEmployeesState extends State<AvailableEmployees> {
       appBar: AppBar(
         title: Text("AvailableEmployees"),
       ),
-      body: Container(
-        child: Center(
-          child: Text("AvailableEmployees"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            //Show Employees
+            EmployeeList(use: "Page"),
+          ],
         ),
       ),
     );

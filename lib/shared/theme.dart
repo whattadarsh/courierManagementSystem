@@ -24,6 +24,7 @@ ThemeData appTheme = ThemeData(
       color: Colors.black,
       fontFamily: 'Raleway',
       fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
     ),
     bodyText1: TextStyle(
       color: Colors.black,

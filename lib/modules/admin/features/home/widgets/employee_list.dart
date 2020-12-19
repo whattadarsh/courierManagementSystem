@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmployeeList extends StatefulWidget {
+  final String use;
   const EmployeeList({
     Key key,
+    @required this.use,
   }) : super(key: key);
 
   @override
@@ -33,18 +35,20 @@ class _EmployeeListState extends State<EmployeeList> {
         SizedBox(
           height: 20.h,
         ),
-        Container(
-          padding: EdgeInsets.all(8.w),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            "Your Employees",
-            style: TextStyle(
-              fontSize: 20.sp,
-              color: appThemeColor6,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
+        widget.use != "Page"
+            ? Container(
+                padding: EdgeInsets.all(8.w),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Your Employees",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: appThemeColor6,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              )
+            : SizedBox.shrink(),
         //Vertical Space
         SizedBox(
           height: 10.h,

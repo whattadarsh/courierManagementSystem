@@ -5,11 +5,19 @@ import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CouriersList extends StatelessWidget {
+class CouriersList extends StatefulWidget {
+  final String use;
+
   const CouriersList({
     Key key,
+    @required this.use,
   }) : super(key: key);
 
+  @override
+  _CouriersListState createState() => _CouriersListState();
+}
+
+class _CouriersListState extends State<CouriersList> {
   @override
   Widget build(BuildContext context) {
     /// ScreenUtil for Responsive UI
@@ -28,18 +36,20 @@ class CouriersList extends StatelessWidget {
         SizedBox(
           height: 20.h,
         ),
-        Container(
-          padding: EdgeInsets.all(8.w),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            "Available Couriers",
-            style: TextStyle(
-              fontSize: 20.sp,
-              color: appThemeColor6,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
+        widget.use != "Page"
+            ? Container(
+                padding: EdgeInsets.all(8.w),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Available Couriers",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: appThemeColor6,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              )
+            : SizedBox.shrink(),
         //Vertical Space
         SizedBox(
           height: 10.h,

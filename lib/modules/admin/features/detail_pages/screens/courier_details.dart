@@ -1,5 +1,7 @@
 import 'package:couriermanagementsystem/core/data/dummy_data.dart';
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/change_details.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
@@ -52,11 +54,11 @@ class _CourierDetailsState extends State<CourierDetails> {
         brightness: Brightness.light,
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(20.h),
         child: Container(
-          color: Colors.white,
-          padding: EdgeInsets.all(20.h),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ///courierName
               Text(
@@ -72,17 +74,6 @@ class _CourierDetailsState extends State<CourierDetails> {
                 height: 20.h,
               ),
               dashedDivider,
-              SizedBox(
-                height: 20.h,
-              ),
-
-              ///Courier Status
-              buildTitle(title: "Courier Status"),
-              SizedBox(
-                height: 10.h,
-              ),
-              buildPara(
-                  title: EnumToString.convertToString(_courier.status) ?? ""),
               SizedBox(
                 height: 20.h,
               ),
@@ -104,49 +95,114 @@ class _CourierDetailsState extends State<CourierDetails> {
               ),
 
               ///Tracking No.
-              buildTitle(title: "Tracking No."),
-              SizedBox(
-                height: 10.h,
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      buildTitle(title: "Tracking No."),
+                      SizedBox(
+                        width: 10.h,
+                      ),
+                      buildPara(title: _courier.cid ?? ""),
+                    ],
+                  ),
+                ),
               ),
-              buildPara(title: _courier.cid ?? ""),
+
+              SizedBox(
+                height: 20.h,
+              ),
+
+              ///Courier Status
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    buildTitle(title: "Shipment Status"),
+                    SizedBox(
+                      width: 10.h,
+                    ),
+                    buildPara(
+                        title: EnumToString.convertToString(_courier.status) ??
+                            ""),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 20.h,
               ),
 
               ///Courier Type
-              buildTitle(title: "Courier Type"),
-              SizedBox(
-                height: 10.h,
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    buildTitle(title: "Courier Type"),
+                    SizedBox(
+                      width: 10.h,
+                    ),
+                    buildPara(
+                        title:
+                            EnumToString.convertToString(_courier.type) ?? ""),
+                  ],
+                ),
               ),
-              buildPara(
-                  title: EnumToString.convertToString(_courier.type) ?? ""),
               SizedBox(
                 height: 20.h,
               ),
 
               ///Dimensions
-              buildTitle(title: "Dimensions (in cms)"),
-              SizedBox(
-                height: 10.h,
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    buildTitle(title: "Dimensions (in cms)"),
+                    SizedBox(
+                      width: 10.h,
+                    ),
+                    buildPara(
+                        title:
+                            "${_courier.length.toString()} x ${_courier.breadth.toString()} x ${_courier.height.toString()}" ??
+                                ""),
+                  ],
+                ),
               ),
-              buildPara(
-                  title:
-                      "${_courier.length.toString()} X ${_courier.breadth.toString()} X ${_courier.height.toString()}" ??
-                          ""),
               SizedBox(
                 height: 20.h,
               ),
 
               ///Weight
-              buildTitle(title: "Weight (in kgs)"),
-              SizedBox(
-                height: 10.h,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    buildTitle(title: "Weight (in kgs)"),
+                    SizedBox(
+                      width: 10.h,
+                    ),
+                    buildPara(title: "${_courier.weight.toString()}" ?? ""),
+                  ],
+                ),
               ),
-              buildPara(title: "Weight: ${_courier.weight.toString()} " ?? ""),
               SizedBox(
                 height: 20.h,
               ),
-              dashedDivider,
 
               ///Expected Delivery Details
               buildTitle(title: "Expected Delivery Details"),
@@ -155,13 +211,23 @@ class _CourierDetailsState extends State<CourierDetails> {
               ),
               if ((_courier.deliveryMan != null) &&
                   (_courier.expectedDeliveryDate != null))
-                ...showDeliveryDetails()
+                ...showDeliveryDetails(_courier)
               else
-                buildPara(title: "Not Dispatched Yet"),
+                Row(
+                  children: [
+                    buildPara(title: "Not Dispatched Yet"),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                  ],
+                ),
               SizedBox(
                 height: 20.h,
               ),
               dashedDivider,
+              SizedBox(
+                height: 20.h,
+              ),
 
               /// Billing Details
 
@@ -179,7 +245,7 @@ class _CourierDetailsState extends State<CourierDetails> {
               SizedBox(
                 height: 20.h,
               ),
-              ...showBill(),
+              ...showBill(_courier),
 
               ///Addresses
               ///Sender
@@ -205,101 +271,16 @@ class _CourierDetailsState extends State<CourierDetails> {
           ),
         ),
       ),
-    );
-  }
-
-  List<Widget> showDeliveryDetails() {
-    return [
-      buildPara(
-          title: _courier.expectedDeliveryDate != null
-              ? "Date: ${_courier.expectedDeliveryDate.toString()} "
-              : ""),
-      SizedBox(
-        height: 10.h,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //TODO:Change details
+          changeCouierDetails(context, _courier);
+        },
+        child: Icon(
+          Icons.edit,
+          size: 35.sp,
+        ),
       ),
-      buildPara(
-          title: _courier.deliveryMan != null
-              ? "Assigned Employee Details: ${_courier.deliveryMan.name.toString()} \nContact No.: ${_courier.deliveryMan.phoneNumber.toString()}"
-              : ""),
-    ];
-  }
-
-  List<Widget> showBill() {
-    return [
-      ///Unit Price
-      buildTitle(title: "Unit Price"),
-      SizedBox(
-        height: 10.h,
-      ),
-      buildPara(title: _courier.unitPrice.toString() ?? ""),
-      SizedBox(
-        height: 20.h,
-      ),
-
-      ///Quantity
-      buildTitle(title: "Quantity"),
-      SizedBox(
-        height: 10.h,
-      ),
-      buildPara(title: _courier.quantity.toString() ?? ""),
-      SizedBox(
-        height: 20.h,
-      ),
-
-      ///Delivery Charges
-      buildTitle(title: "Delivery Charges"),
-      SizedBox(
-        height: 10.h,
-      ),
-      buildPara(
-          title: _courier.deliveryCharges == null
-              ? _courier.deliveryCharges.toString()
-              : "0.0"),
-      SizedBox(
-        height: 20.h,
-      ),
-
-      ///Total Price
-      buildTitle(title: "Total Price"),
-      SizedBox(
-        height: 10.h,
-      ),
-      buildPara(
-          title: _courier.totalPrice == null
-              ? _courier.totalPrice.toString()
-              : "0.0"),
-      SizedBox(
-        height: 20.h,
-      ),
-    ];
-  }
-
-  Widget buildTitle({String title = ""}) {
-    ///style modified
-    var defaultStyle = TextStyle(
-      height: 1.5,
-      fontSize: 14.sp,
-      color: Colors.grey,
-      letterSpacing: 0.7,
-      fontWeight: FontWeight.w700,
-    );
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(title, style: defaultStyle),
-    );
-  }
-
-  Widget buildPara({String title = ""}) {
-    ///style modified
-    var defaultStyle = TextStyle(
-      fontSize: 16.sp,
-      color: Colors.black,
-      letterSpacing: 0.7,
-      fontWeight: FontWeight.normal,
-    );
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(title, style: defaultStyle),
     );
   }
 }

@@ -1,11 +1,13 @@
 import 'package:couriermanagementsystem/core/screens/aboutus.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/my_employees.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/assigned_courier.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_couriers.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_employees.dart';
 import 'package:flutter/material.dart';
 
 List<Map<String, Object>> menuData = [
   {
     'icon': Icons.home_outlined,
-    'navigateTo': null,
+    'navigateTo': '/',
     'title': 'Home',
   },
   {
@@ -15,7 +17,12 @@ List<Map<String, Object>> menuData = [
   },
   {
     'icon': Icons.delivery_dining,
-    'navigateTo': Aboutus.routeName,
+    'navigateTo': AssignedCouriersByAdmin.routeName,
+    'title': 'Your accepted Couriers',
+  },
+  {
+    'icon': Icons.article_outlined,
+    'navigateTo': AvailableCouriers.routeName,
     'title': 'Your accepted Couriers',
   },
   {

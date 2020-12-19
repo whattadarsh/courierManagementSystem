@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 List<Map<String, Object>> menuData = [
   {
     'icon': Icons.home_outlined,
-    'navigateTo': null,
+    'navigateTo': '/',
     'title': 'Home',
   },
   {

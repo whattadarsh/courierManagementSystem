@@ -1,7 +1,6 @@
+import 'package:couriermanagementsystem/modules/admin/features/drawer/widgets/admin_drawer.dart';
 import 'package:couriermanagementsystem/modules/admin/features/home/widgets/couriers_list.dart';
 import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
-import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/cust_drawer.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
@@ -123,10 +122,10 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
                 height: 10.h,
               ),
               //Show Employees
-              EmployeeList(),
+              EmployeeList(use: "Widget"),
 
               /// Couriers List
-              CouriersList(),
+              CouriersList(use: "Widget"),
               //Vertical Space
               SizedBox(
                 height: 10.h,
@@ -138,7 +137,7 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
     );
     return Scaffold(
       key: scaffoldKey,
-      drawer: DrawerWidget(),
+      drawer: AdminDrawerWidget(),
       // Disable opening the drawer with a swipe gesture.
       // drawerEnableOpenDragGesture: false,
       body: _body,
