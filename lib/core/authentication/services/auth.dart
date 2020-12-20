@@ -1,5 +1,4 @@
 import 'package:couriermanagementsystem/core/authentication/screens/onboarding_page.dart';
-import 'package:couriermanagementsystem/core/authentication/screens/personal_details_form.dart';
 import 'package:couriermanagementsystem/modules/customer/features/home/cust_welcome_page.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
