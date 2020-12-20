@@ -14,14 +14,8 @@ class Customer {
     this.name,
     this.email,
     this.phoneNumber,
-    this.userAddresses,
+    this.userAddresses = const [],
   });
-  // TODO: Show a form to fill these fields after login
-  void setFields({String name, String email, String phoneNumber}) {
-    this.name = name;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-  }
 
   void addAddr(Address _newAddr) {
     this.userAddresses.add(_newAddr);

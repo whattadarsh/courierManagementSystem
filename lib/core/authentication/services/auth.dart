@@ -1,7 +1,10 @@
 import 'package:couriermanagementsystem/core/authentication/screens/onboarding_page.dart';
+import 'package:couriermanagementsystem/core/authentication/screens/personal_details_form.dart';
 import 'package:couriermanagementsystem/modules/customer/features/home/cust_welcome_page.dart';
+import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 // Refer to this for understanding changes after update:
 // https://firebase.flutter.dev/docs/migration/
@@ -49,7 +52,12 @@ class AuthService {
 
   /// Handles Authentication Sigup
   Future<dynamic> handleSignUp(
-      String email, String password, String role, BuildContext context) async {
+      {@required String email,
+      @required String name,
+      @required String phoneNo,
+      @required String password,
+      @required String role,
+      @required BuildContext context}) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     String errorMsg = "";
     User user;
@@ -75,6 +83,13 @@ class AuthService {
     print('signUpEmail succeeded: ${user.uid}');
 
     if (user != null && (user.uid == currentUser.uid)) {
+      Provider.of<CustomerInfoServices>(context, listen: false).setUser(
+          userId: user.uid,
+          email: user.email,
+          context: context,
+          name: name,
+          phoneNo: phoneNo);
+
       Navigator.of(context).pushNamedAndRemoveUntil(
         WelcomePage.routeName,
         (Route<dynamic> route) => false,

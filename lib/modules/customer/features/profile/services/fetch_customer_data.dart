@@ -20,7 +20,7 @@ Future<Customer> fetchCustomerDetails(
   FirebaseFirestore _db = FirebaseFirestore.instance;
   DocumentSnapshot _custDocSnapshot =
       await _db.collection("customers").doc(cust.uid).get();
-  if (_custDocSnapshot.data == null) {
+  if (_custDocSnapshot.exists == false) {
     ///New cust Upload Details
     await createCustomer(cust);
     _custDocSnapshot = await _db.collection("customers").doc(cust.uid).get();

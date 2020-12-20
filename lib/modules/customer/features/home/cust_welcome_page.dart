@@ -22,11 +22,9 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     role = "";
     scaffoldKey = new GlobalKey<ScaffoldState>();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      var user = FirebaseAuth.instance.currentUser;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<CustomerInfoServices>(context, listen: false)
-          .setUserId(userId: user.uid, email: user.email, context: context);
-      super.initState();
+          .register(context);
     });
     super.initState();
   }

@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
 
         // Once complete, show  application
         if (snapshot.connectionState == ConnectionState.done) {
-          return AdminWelcomePage();
+          return OnboardingPage();
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

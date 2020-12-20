@@ -17,13 +17,6 @@ class Employee {
     @required this.phoneNumber,
     this.assignedCouriers = const [],
   });
-//TODO: Show a form to fill these fields after login
-  void setFields({String name, String email, String phoneNumber}) {
-    this.name = name;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-  }
-
   void addCourier(Courier _newCourier) {
     this.assignedCouriers.add(_newCourier);
   }

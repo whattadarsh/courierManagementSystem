@@ -8,33 +8,23 @@ import 'fetch_customer_data.dart';
 class CustomerInfoServices extends ChangeNotifier {
   Customer customerData;
   bool hasProfileData = false;
-  Future<void> setUserId(
+  Future<void> setUser(
       {@required String userId,
+      @required String name,
       @required String email,
+      @required String phoneNo,
       @required BuildContext context}) async {
     this.customerData = new Customer(
       uid: userId,
-      name: "John Doe",
+      name: name,
       email: email,
-      phoneNumber: "1234567890",
+      phoneNumber: phoneNo,
     );
-
-    ///fetch user details from firebase
-    this.customerData = await fetchCustomerDetails(this.customerData, context);
-    notifyListeners();
   }
 
-  void setCustomerFields(
-      {String name,
-      String email,
-      String phoneNumber,
-      String profilePictureUrl}) {
-    this.customerData.setFields(
-          name: name,
-          email: email,
-          phoneNumber: phoneNumber,
-        );
-    this.hasProfileData = true;
+  Future<void> register(BuildContext context) async {
+    ///fetch user details from firebase
+    this.customerData = await fetchCustomerDetails(this.customerData, context);
     notifyListeners();
   }
 
