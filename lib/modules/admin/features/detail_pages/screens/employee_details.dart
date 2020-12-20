@@ -1,4 +1,5 @@
 import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
 import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
@@ -119,35 +120,6 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildTitle({String title = ""}) {
-    ///style modified
-    var defaultStyle = TextStyle(
-      height: 1.5,
-      fontSize: 14.sp,
-      color: Colors.grey,
-      letterSpacing: 0.7,
-      fontWeight: FontWeight.w700,
-    );
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(title.toUpperCase() ?? "", style: defaultStyle),
-    );
-  }
-
-  Widget buildPara({String title = ""}) {
-    ///style modified
-    var defaultStyle = TextStyle(
-      fontSize: 16.sp,
-      color: Colors.black,
-      letterSpacing: 0.7,
-      fontWeight: FontWeight.normal,
-    );
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(title ?? "", style: defaultStyle),
     );
   }
 }

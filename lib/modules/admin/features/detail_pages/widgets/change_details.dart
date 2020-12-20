@@ -1,11 +1,14 @@
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/assign_delivery_man.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/change_courier_status.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/set_delivery_date.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'helper_widgets.dart';
-
-void changeCouierDetails(BuildContext context, Courier _courier) {
+void changeCouierDetails(BuildContext context) {
+  Courier _courier = Provider.of<EditCourier>(context, listen: false).courier;
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
@@ -24,7 +27,6 @@ void changeCouierDetails(BuildContext context, Courier _courier) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              //Vertical Space
               SizedBox(
                 height: 20,
               ),
@@ -45,12 +47,10 @@ void changeCouierDetails(BuildContext context, Courier _courier) {
                   ),
                 ),
               ),
-
               SizedBox(
                 height: 20,
               ),
               dashedDivider,
-
               SizedBox(
                 height: 20,
               ),
@@ -69,38 +69,23 @@ void changeCouierDetails(BuildContext context, Courier _courier) {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    buildTitle(title: "Shipment Status"),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    buildPara(
-                        title: EnumToString.convertToString(_courier.status) ??
-                            ""),
-                  ],
-                ),
+              ChangeCourierStatus(
+                courier: _courier,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "current status: " +
-                        courierStatus.Dispathced.toString().split('.').last,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.redAccent,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: 20,
+              ),
+              AssignEmployee(
+                courier: _courier,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SetDeliveryDate(
+                courier: _courier,
+              ),
+              SizedBox(
+                height: 20,
               ),
               Container(
                 margin: EdgeInsets.all(10),
@@ -112,7 +97,7 @@ void changeCouierDetails(BuildContext context, Courier _courier) {
                   child: Container(
                     padding: EdgeInsets.all(15),
                     child: Text(
-                      "Ok",
+                      "Update & Save",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -121,6 +106,8 @@ void changeCouierDetails(BuildContext context, Courier _courier) {
                   ),
                   onPressed: () {
                     print("Getting back");
+                    Provider.of<EditCourier>(context, listen: false)
+                        .updateAndSaveChanges();
                     Navigator.of(context).pop();
                   },
                 ),

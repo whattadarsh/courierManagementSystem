@@ -5,7 +5,8 @@ List<Widget> showDeliveryDetails(Courier _courier) {
   return [
     buildPara(
         title: _courier.expectedDeliveryDate != null
-            ? "Date: ${_courier.expectedDeliveryDate.toString()} "
+            ? "Date: ${_courier.expectedDeliveryDate..toIso8601String()
+                            .split("")[0]} "
             : ""),
     SizedBox(
       height: 10,

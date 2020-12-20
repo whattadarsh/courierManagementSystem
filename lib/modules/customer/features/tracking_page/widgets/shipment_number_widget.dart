@@ -232,7 +232,7 @@ class _ShipmentNumberWidgetState extends State<ShipmentNumberWidget> {
                       alignment: Alignment.center,
                       child: Text(
                         "current status: " +
-                            courierStatus.Dispathced.toString().split('.').last,
+                            c.status.toString().split('.').last,
                         style: TextStyle(
                           fontSize: 20.sp,
                           color: Colors.redAccent,

@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 enum courierStatus {
   Pending,
   Approved,
-  Dispathced,
+  Dispatched,
   Shipped,
   onTheWay,
   Delivered,
@@ -34,7 +34,7 @@ class Courier {
     @required this.type,
     @required this.unitPrice,
     @required this.quantity,
-    this.deliveryCharges,
+    this.deliveryCharges = 0,
     @required this.totalPrice,
     @required this.length,
     @required this.breadth,
@@ -48,22 +48,22 @@ class Courier {
   });
 
   ///Setters for setting expected DateTime, deliveryMan, delivery Charges;
-  set assignDeliveryMan(Employee _e) {
+  void assignDeliveryMan(Employee _e) {
     this.deliveryMan = _e;
   }
 
-  set deliveryTime(DateTime _time) {
+  void setDeliveryTime(DateTime _time) {
     this.expectedDeliveryDate = _time;
   }
 
-  set addDeliveryCharges(double _charge) {
+  void addDeliveryCharges(double _charge) {
     if (_charge < 0) _charge = 0;
     this.deliveryCharges = _charge;
     this.totalPrice += this.deliveryCharges;
   }
 
   /// Change status
-  set changeStatus(courierStatus _s) {
+  void changeCourierStatus(courierStatus _s) {
     this.status = _s;
   }
 
