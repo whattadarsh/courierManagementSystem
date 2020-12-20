@@ -4,6 +4,8 @@ import 'package:couriermanagementsystem/modules/admin/features/detail_pages/scre
 import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
+import 'package:provider/provider.dart';
 
 class CouriersList extends StatefulWidget {
   final String use;
@@ -29,46 +31,49 @@ class _CouriersListState extends State<CouriersList> {
       ),
       allowFontScaling: true,
     );
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //Vertical Space
-        SizedBox(
-          height: 20.h,
-        ),
-        widget.use != "Page"
-            ? Container(
-                padding: EdgeInsets.all(8.w),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Available Couriers",
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: appThemeColor6,
-                    fontWeight: FontWeight.w700,
+    return Container(
+      padding: EdgeInsets.all(10.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+          widget.use != "Page"
+              ? Container(
+                  padding: EdgeInsets.all(8.w),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Available Couriers",
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: appThemeColor6,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-              )
-            : SizedBox.shrink(),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-        ...generateCouriers(context),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-        Container(
-          width: double.infinity,
-          color: Colors.black,
-          height: 2.h,
-        ),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-      ],
+                )
+              : SizedBox.shrink(),
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+          ...generateCouriers(context),
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blueGrey[50],
+            height: 2.h,
+          ),
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+        ],
+      ),
     );
   }
 
@@ -81,8 +86,8 @@ class _CouriersListState extends State<CouriersList> {
         return ListTile(
           contentPadding: EdgeInsets.zero,
           onTap: () {
-            Navigator.of(context)
-                .pushNamed(CourierDetails.routeName, arguments: cour);
+            Provider.of<EditCourier>(context, listen: false).courier = cour;
+            Navigator.of(context).pushNamed(CourierDetails.routeName);
           },
           title: Card(
             margin: EdgeInsets.all(2.w),

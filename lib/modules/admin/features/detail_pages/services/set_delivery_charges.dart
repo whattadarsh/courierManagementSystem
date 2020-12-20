@@ -6,13 +6,13 @@ import 'package:provider/provider.dart';
 
 import 'courier_editing_services.dart';
 
-class SetDeliveryDate extends StatefulWidget {
+class SetDeliveryCharges extends StatefulWidget {
   static const routeName = "/SetDeliveryDate";
   @override
   _SetDeliveryCharges createState() => _SetDeliveryCharges();
 }
 
-class _SetDeliveryCharges extends State<SetDeliveryDate> {
+class _SetDeliveryCharges extends State<SetDeliveryCharges> {
   TextEditingController deliveryCharges;
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _SetDeliveryCharges extends State<SetDeliveryDate> {
               keyboardType: TextInputType.number,
               cursorColor: Theme.of(context).primaryColor,
               onEditingComplete: () {
-                Provider.of<EditCourier>(context)
+                Provider.of<EditCourier>(context, listen: false)
                     .setDeliveryCharges(double.parse(deliveryCharges.text));
               },
             ),

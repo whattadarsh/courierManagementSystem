@@ -2,6 +2,7 @@ import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/assign_delivery_man.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/change_courier_status.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
+import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/set_delivery_charges.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/set_delivery_date.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,8 @@ void changeCouierDetails(BuildContext context) {
       return SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
         child: Container(
+          height: MediaQuery.of(context).size.height * 0.75,
           padding: EdgeInsets.all(10),
-          height: 300,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -84,6 +85,10 @@ void changeCouierDetails(BuildContext context) {
               SetDeliveryDate(
                 courier: _courier,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              SetDeliveryCharges(),
               SizedBox(
                 height: 20,
               ),

@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'modules/admin/features/detail_pages/screens/assigned_courier.dart';
 import 'modules/admin/features/detail_pages/screens/available_couriers.dart';
 import 'modules/admin/features/detail_pages/screens/employee_details.dart';
+import 'modules/admin/features/detail_pages/services/courier_editing_services.dart';
 import 'modules/admin/features/home/screens/admin_welcome_page.dart';
 
 import 'modules/admin/features/home/services/admin_info_services.dart';
@@ -84,6 +85,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AdminInfoServices(),
+        ),
+        ChangeNotifierProvider<EditCourier>(
+          create: (context) => EditCourier(),
         ),
       ],
       child: MaterialApp(

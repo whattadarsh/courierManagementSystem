@@ -28,46 +28,45 @@ class _EmployeeListState extends State<EmployeeList> {
       ),
       allowFontScaling: true,
     );
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //Vertical Space
-        SizedBox(
-          height: 20.h,
-        ),
-        widget.use != "Page"
-            ? Container(
-                padding: EdgeInsets.all(8.w),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Your Employees",
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: appThemeColor6,
-                    fontWeight: FontWeight.w700,
+    return Container(
+      padding: EdgeInsets.all(10.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //Vertical Space
+          SizedBox(
+            height: 20.h,
+          ),
+          widget.use != "Page"
+              ? Container(
+                  padding: EdgeInsets.all(8.w),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Your Employees",
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: appThemeColor6,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-              )
-            : SizedBox.shrink(),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-        ...generateEmployees(),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-        Container(
-          width: double.infinity,
-          color: Colors.black,
-          height: 2.h,
-        ),
-        //Vertical Space
-        SizedBox(
-          height: 10.h,
-        ),
-      ],
+                )
+              : SizedBox.shrink(),
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+          ...generateEmployees(),
+          //Vertical Space
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.blueGrey[50],
+            height: 2.h,
+          ),
+        ],
+      ),
     );
   }
 

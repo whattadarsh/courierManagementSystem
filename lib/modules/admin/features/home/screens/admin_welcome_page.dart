@@ -43,6 +43,7 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
       allowFontScaling: true,
     );
     var _greetingsToUser = Container(
+      alignment: Alignment.centerLeft,
       padding: EdgeInsets.all(8.w),
       child: RichText(
         text: TextSpan(
@@ -68,7 +69,6 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
       child: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -86,35 +86,48 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              /// Menu Button
-              IconButton(
-                padding: EdgeInsets.zero,
-                enableFeedback: true,
-                tooltip: "Menu",
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                  size: 30.sp,
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.all(10.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    /// Menu Button
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        enableFeedback: true,
+                        tooltip: "Menu",
+                        icon: Icon(
+                          Icons.menu,
+                          color: Colors.black,
+                          size: 30.sp,
+                        ),
+                        onPressed: () {
+                          print("Opening drawer...");
+                          scaffoldKey.currentState.openDrawer();
+                        },
+                      ),
+                    ),
+                    //Vertical Space
+                    SizedBox(
+                      height: 10.h,
+                    ),
+
+                    /// Greetings to User
+                    _greetingsToUser,
+                    //Vertical Space
+                    SizedBox(
+                      height: 10.h,
+                    ),
+
+                    /// Courier Tracking Widget
+                    TrackCourier(),
+                  ],
                 ),
-                onPressed: () {
-                  print("Opening drawer...");
-                  scaffoldKey.currentState.openDrawer();
-                },
               ),
-              //Vertical Space
-              SizedBox(
-                height: 10.h,
-              ),
-
-              /// Greetings to User
-              _greetingsToUser,
-              //Vertical Space
-              SizedBox(
-                height: 10.h,
-              ),
-
-              /// Courier Tracking Widget
-              TrackCourier(),
 
               /// Show Available Couriers
               //Vertical Space

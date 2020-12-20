@@ -17,6 +17,13 @@ class ChangeCourierStatus extends StatefulWidget {
 
 //CHECKIT
 class _ChangeCourierStatusState extends State<ChangeCourierStatus> {
+  courierStatus status;
+  @override
+  void initState() {
+    status = Provider.of<EditCourier>(context, listen: false).courier.status;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,14 +41,14 @@ class _ChangeCourierStatusState extends State<ChangeCourierStatus> {
               ),
               DropdownButtonHideUnderline(
                 child: DropdownButton<courierStatus>(
-                  value: widget.courier.status,
+                  value: status,
                   isDense: true,
                   onChanged: (courierStatus newValue) {
                     setState(
                       () {
-                        Provider.of<EditCourier>(context)
+                        Provider.of<EditCourier>(context, listen: false)
                             .changeStatus(newValue);
-                        // state.didChange(newValue);
+                        status = newValue;
                         print("Status changed to $newValue");
                       },
                     );

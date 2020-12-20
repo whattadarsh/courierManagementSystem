@@ -23,7 +23,7 @@ List<Map<String, Object>> menuData = [
   {
     'icon': Icons.article_outlined,
     'navigateTo': AvailableCouriers.routeName,
-    'title': 'Your accepted Couriers',
+    'title': 'Available Couriers',
   },
   {
     'icon': Icons.info_outline,

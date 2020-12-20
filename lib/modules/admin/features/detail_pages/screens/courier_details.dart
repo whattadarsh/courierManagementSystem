@@ -1,5 +1,3 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/change_details.dart';
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
@@ -13,9 +11,8 @@ import 'package:provider/provider.dart';
 
 class CourierDetails extends StatefulWidget {
   static const routeName = "/CourierDetails";
-  final Courier courier;
 
-  const CourierDetails({Key key, @required this.courier}) : super(key: key);
+  const CourierDetails({Key key}) : super(key: key);
 
   @override
   _CourierDetailsState createState() => _CourierDetailsState();
@@ -25,9 +22,9 @@ class _CourierDetailsState extends State<CourierDetails> {
   @override
   void initState() {
     // _courier = dummycouriers[0];
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      Provider.of<EditCourier>(context, listen: false).courier = widget.courier;
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+    //   Provider.of<EditCourier>(context, listen: false).courier = widget.courier;
+    // });
     super.initState();
   }
 
@@ -59,239 +56,237 @@ class _CourierDetailsState extends State<CourierDetails> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.h),
-        child: ChangeNotifierProvider<EditCourier>(
-          create: (context) => EditCourier(),
-          child: Container(
-            child: Consumer<EditCourier>(
-              builder: (context, courierEditedDetails, _) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ///courierName
-                    Text(
-                      "${courierEditedDetails.courier.courierName}" ?? "",
+        child: Container(
+          child: Consumer<EditCourier>(
+            builder: (context, courierEditedDetails, _) {
+              var c = courierEditedDetails.courier;
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ///courierName
+                  Text(
+                    "${courierEditedDetails.courier.courierName}" ?? "",
+                    style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  dashedDivider,
+                  SizedBox(
+                    height: 20.h,
+                  ),
+
+                  /// Courier Details
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Courier Details",
                       style: TextStyle(
                         fontFamily: 'Raleway',
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
                       ),
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    dashedDivider,
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
 
-                    /// Courier Details
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Courier Details",
-                        style: TextStyle(
-                          fontFamily: 'Raleway',
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                  ///Tracking No.
+
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          buildTitle(title: "Tracking No."),
+                          SizedBox(
+                            width: 10.h,
+                          ),
+                          buildPara(
+                              title: courierEditedDetails.courier.cid ?? ""),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20.h,
+                  ),
+
+                  ///Courier Status
+
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildTitle(title: "Shipment Status"),
+                        SizedBox(
+                          width: 10.h,
                         ),
-                      ),
+                        buildPara(
+                            title: EnumToString.convertToString(
+                                    courierEditedDetails.courier.status) ??
+                                ""),
+                      ],
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
 
-                    ///Tracking No.
+                  ///Courier Type
 
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            buildTitle(title: "Tracking No."),
-                            SizedBox(
-                              width: 10.h,
-                            ),
-                            buildPara(
-                                title: courierEditedDetails.courier.cid ?? ""),
-                          ],
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildTitle(title: "Courier Type"),
+                        SizedBox(
+                          width: 10.h,
                         ),
-                      ),
+                        buildPara(
+                            title: EnumToString.convertToString(
+                                    courierEditedDetails.courier.type) ??
+                                ""),
+                      ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
 
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                  ///Dimensions
 
-                    ///Courier Status
-
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          buildTitle(title: "Shipment Status"),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          buildPara(
-                              title: EnumToString.convertToString(
-                                      courierEditedDetails.courier.status) ??
-                                  ""),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-
-                    ///Courier Type
-
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          buildTitle(title: "Courier Type"),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          buildPara(
-                              title: EnumToString.convertToString(
-                                      courierEditedDetails.courier.type) ??
-                                  ""),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-
-                    ///Dimensions
-
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          buildTitle(title: "Dimensions (in cms)"),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          buildPara(
-                              title:
-                                  "${courierEditedDetails.courier.length.toString()} x ${courierEditedDetails.courier.breadth.toString()} x ${courierEditedDetails.courier.height.toString()}" ??
-                                      ""),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-
-                    ///Weight
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          buildTitle(title: "Weight (in kgs)"),
-                          SizedBox(
-                            width: 10.h,
-                          ),
-                          buildPara(
-                              title:
-                                  "${courierEditedDetails.courier.weight.toString()}" ??
-                                      ""),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-
-                    ///Expected Delivery Details
-                    buildTitle(title: "Expected Delivery Details"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    if ((courierEditedDetails.courier.deliveryMan != null) &&
-                        (courierEditedDetails.courier.expectedDeliveryDate !=
-                            null))
-                      ...showDeliveryDetails(courierEditedDetails.courier)
-                    else
-                      Row(
-                        children: [
-                          buildPara(title: "Not Dispatched Yet"),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                        ],
-                      ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    dashedDivider,
-                    SizedBox(
-                      height: 20.h,
-                    ),
-
-                    /// Billing Details
-
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Billing Details",
-                        style: TextStyle(
-                          fontFamily: 'Raleway',
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildTitle(title: "Dimensions (in cms)"),
+                        SizedBox(
+                          width: 10.h,
                         ),
+                        buildPara(
+                            title:
+                                "${courierEditedDetails.courier.length.toString()} x ${courierEditedDetails.courier.breadth.toString()} x ${courierEditedDetails.courier.height.toString()}" ??
+                                    ""),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+
+                  ///Weight
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        buildTitle(title: "Weight (in kgs)"),
+                        SizedBox(
+                          width: 10.h,
+                        ),
+                        buildPara(
+                            title:
+                                "${courierEditedDetails.courier.weight.toString()}" ??
+                                    ""),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+
+                  ///Expected Delivery Details
+                  buildTitle(title: "Expected Delivery Details"),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  if ((courierEditedDetails.courier.deliveryMan != null) &&
+                      (courierEditedDetails.courier.expectedDeliveryDate !=
+                          null))
+                    ...showDeliveryDetails(courierEditedDetails.courier)
+                  else
+                    Row(
+                      children: [
+                        buildPara(title: "Not Dispatched Yet"),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                      ],
+                    ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  dashedDivider,
+                  SizedBox(
+                    height: 20.h,
+                  ),
+
+                  /// Billing Details
+
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Billing Details",
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    ...showBill(courierEditedDetails.courier),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  ...showBill(courierEditedDetails.courier),
 
-                    ///Addresses
-                    ///Sender
-                    buildTitle(title: "Sender's Details"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildPara(
-                        title: courierEditedDetails.courier.origin
-                                .addressString() ??
-                            ""),
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                  ///Addresses
+                  ///Sender
+                  buildTitle(title: "Sender's Details"),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildPara(
+                      title:
+                          courierEditedDetails.courier.origin.addressString() ??
+                              ""),
+                  SizedBox(
+                    height: 20.h,
+                  ),
 
-                    ///Destination
-                    buildTitle(title: "Destination Address"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildPara(
-                        title: courierEditedDetails.courier.destination
-                                .addressString() ??
-                            ""),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                  ],
-                );
-              },
-            ),
+                  ///Destination
+                  buildTitle(title: "Destination Address"),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildPara(
+                      title: courierEditedDetails.courier.destination
+                              .addressString() ??
+                          ""),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

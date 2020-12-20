@@ -20,6 +20,13 @@ Row get dashedDivider => Row(
 const SizedBox spacer = const SizedBox(
   height: 15,
 );
+String dateTimetoString(DateTime _dt) {
+  return _dt.day.toString() +
+      "/" +
+      _dt.month.toString() +
+      "/" +
+      _dt.year.toString();
+}
 
 Widget dividingLine() {
   return Divider(

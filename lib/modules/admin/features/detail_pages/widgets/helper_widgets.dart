@@ -1,12 +1,12 @@
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> showDeliveryDetails(Courier _courier) {
   return [
     buildPara(
         title: _courier.expectedDeliveryDate != null
-            ? "Date: ${_courier.expectedDeliveryDate..toIso8601String()
-                            .split("")[0]} "
+            ? "Date: ${dateTimetoString(_courier.expectedDeliveryDate)} "
             : ""),
     SizedBox(
       height: 10,

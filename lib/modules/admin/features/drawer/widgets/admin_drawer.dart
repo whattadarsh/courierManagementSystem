@@ -1,9 +1,9 @@
+import 'package:couriermanagementsystem/modules/admin/features/drawer/data/drawer_menu_admin_data.dart';
 import 'package:flutter/material.dart';
 import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
-import 'package:couriermanagementsystem/shared/contact_us.dart';
-import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
+import 'package:couriermanagementsystem/core/screens/contact_us.dart';
 
 class AdminDrawerWidget extends StatefulWidget {
   static const routeName = "/AdminDrawerWidget";

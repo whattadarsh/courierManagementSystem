@@ -42,10 +42,9 @@ class _AssignEmployeeState extends State<AssignEmployee> {
                   onChanged: (Employee newValue) {
                     setState(
                       () {
-                        Provider.of<EditCourier>(context)
+                        Provider.of<EditCourier>(context, listen: false)
                             .setDeliveryMan(newValue);
                         _deliveryMan = newValue;
-
                         print("Assigned Employee: ${newValue.name}");
                       },
                     );
