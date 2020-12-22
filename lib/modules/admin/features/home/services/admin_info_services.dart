@@ -7,35 +7,25 @@ import 'fetch_admin_data.dart';
 class AdminInfoServices extends ChangeNotifier {
   Admin adminData;
   bool hasProfileData = false;
-  Future<void> setUserId(
+  Future<void> setAdmin(
       {@required String userId,
+      @required String name,
       @required String email,
+      @required String phoneNo,
       @required BuildContext context}) async {
     this.adminData = new Admin(
       aid: userId,
-      name: "John Doe",
+      name: name,
       email: email,
-      phoneNumber: "1234567890",
+      phoneNumber: phoneNo,
     );
+  }
 
+  Future<void> registerOrFetch(BuildContext context) async {
     ///fetch user details from firebase
     this.adminData = await fetchAdminDetails(this.adminData, context);
     notifyListeners();
   }
-
-  // void setAdminFields(
-  //     {String name,
-  //     String email,
-  //     String phoneNumber,
-  //     String profilePictureUrl}) {
-  //   this.adminData.setFields(
-  //         name: name,
-  //         email: email,
-  //         phoneNumber: phoneNumber,
-  //       );
-  //   this.hasProfileData = true;
-  //   notifyListeners();
-  // }
 
   // Future<void> updateCourierStatus(int index) async {
   //   this.adminData.availableCouriers(_newAddress);

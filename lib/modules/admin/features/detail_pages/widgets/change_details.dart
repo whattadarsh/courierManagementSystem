@@ -19,6 +19,8 @@ void changeCouierDetails(BuildContext context) {
         topRight: Radius.circular(15),
       ),
     ),
+    isDismissible: false,
+    enableDrag: true,
     builder: (context) {
       return SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),

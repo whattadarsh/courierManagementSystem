@@ -51,8 +51,9 @@ class _SetDeliveryCharges extends State<SetDeliveryCharges> {
               keyboardType: TextInputType.number,
               cursorColor: Theme.of(context).primaryColor,
               onEditingComplete: () {
+                double d = double.tryParse(deliveryCharges.text) ?? 0.0;
                 Provider.of<EditCourier>(context, listen: false)
-                    .setDeliveryCharges(double.parse(deliveryCharges.text));
+                    .setDeliveryCharges(d);
               },
             ),
           ),

@@ -20,7 +20,7 @@ Future<Admin> fetchAdminDetails(Admin admin, BuildContext context) async {
   FirebaseFirestore _db = FirebaseFirestore.instance;
   DocumentSnapshot _adminDocSnapshot =
       await _db.collection("admins").doc(admin.aid).get();
-  if (_adminDocSnapshot.data == null) {
+  if (_adminDocSnapshot.exists == false) {
     ///New admin Upload Details
     await createAdmin(admin);
     _adminDocSnapshot = await _db.collection("admins").doc(admin.aid).get();

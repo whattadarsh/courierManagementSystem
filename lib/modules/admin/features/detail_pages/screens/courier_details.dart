@@ -19,6 +19,7 @@ class CourierDetails extends StatefulWidget {
 }
 
 class _CourierDetailsState extends State<CourierDetails> {
+  String role;
   @override
   void initState() {
     // _courier = dummycouriers[0];
@@ -38,6 +39,8 @@ class _CourierDetailsState extends State<CourierDetails> {
 
   @override
   Widget build(BuildContext context) {
+    role = ModalRoute.of(context).settings.arguments;
+
     ///ScreenUtil for Responsive UI
     ScreenUtil.init(
       context,
@@ -290,16 +293,18 @@ class _CourierDetailsState extends State<CourierDetails> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //TODO:Change details
-          changeCouierDetails(context);
-        },
-        child: Icon(
-          Icons.edit,
-          size: 35.sp,
-        ),
-      ),
+      floatingActionButton: (role != "Customer")
+          ? FloatingActionButton(
+              onPressed: () {
+                //TODO:Change details
+                changeCouierDetails(context);
+              },
+              child: Icon(
+                Icons.edit,
+                size: 35.sp,
+              ),
+            )
+          : SizedBox.shrink(),
     );
   }
 }

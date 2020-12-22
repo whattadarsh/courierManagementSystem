@@ -1,9 +1,11 @@
 import 'package:couriermanagementsystem/modules/admin/features/drawer/widgets/admin_drawer.dart';
+import 'package:couriermanagementsystem/modules/admin/features/home/services/admin_info_services.dart';
 import 'package:couriermanagementsystem/modules/admin/features/home/widgets/couriers_list.dart';
 import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
+import 'package:provider/provider.dart';
 
 class AdminWelcomePage extends StatefulWidget {
   static const routeName = "/AdminWelcomePage";
@@ -19,12 +21,10 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
   void initState() {
     scaffoldKey = new GlobalKey<ScaffoldState>();
     role = "";
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-    //   var user = FirebaseAuth.instance.currentUser;
-    //   Provider.of<AdminInfoServices>(context, listen: false)
-    //       .setUserId(userId: user.uid, email: user.email, context: context);
-    //
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<AdminInfoServices>(context, listen: false)
+          .registerOrFetch(context);
+    });
     super.initState();
   }
 
