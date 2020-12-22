@@ -1,9 +1,12 @@
-import 'package:couriermanagementsystem/modules/customer/features/profile/data/address.dart';
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:couriermanagementsystem/modules/customer/features/address/widgets/add_new_address.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/shipment/widgets/add_address.dart';
+import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,17 +17,29 @@ class CreateShipment extends StatefulWidget {
 }
 
 class _CreateShipmentState extends State<CreateShipment> {
-  Address _pickupAddress;
+  Address _pickupAddress, _destAddress;
   GlobalKey<FormState> _formKey;
-  List<TextEditingController> deliveryAddress;
-  List<TextEditingController> productDetails;
-  String _courierType;
+  TextEditingController _corName,
+      _corUnitPrice,
+      _corQuantity,
+      _corWeight,
+      _corlen,
+      _corbreadth,
+      _corheight;
+  courierType _courierType;
+  double _total;
   @override
   void initState() {
     _formKey = new GlobalKey<FormState>();
-    _pickupAddress = addresses[0];
-    deliveryAddress = List.generate(8, (index) => TextEditingController());
-    productDetails = List.generate(7, (index) => TextEditingController());
+    _pickupAddress = dummyaddresses[0];
+    _destAddress = dummyaddresses[1];
+    _corName = new TextEditingController();
+    _corUnitPrice = new TextEditingController();
+    _corQuantity = new TextEditingController();
+    _corWeight = new TextEditingController();
+    _corlen = new TextEditingController();
+    _corbreadth = new TextEditingController();
+    _corheight = new TextEditingController();
     super.initState();
   }
 
@@ -90,9 +105,44 @@ class _CreateShipmentState extends State<CreateShipment> {
             ),
           ),
         ),
-        onPressed: () {
-          //TODO: Implement This
-          print("Courier Booked!!");
+        onPressed: () async {
+          if (_formKey.currentState.validate()) {
+            setState(() {
+              // isProcessing = true;
+            });
+            _formKey.currentState.save();
+            int quan = int.tryParse(_corQuantity.text) ?? 1;
+            double uprice = double.tryParse(_corUnitPrice.text) ?? 20.0;
+            double _len = double.tryParse(_corlen.text) ?? 20.0;
+            double _breadth = double.tryParse(_corbreadth.text) ?? 20.0;
+            double _hght = double.tryParse(_corheight.text) ?? 20.0;
+            double _wgt = double.tryParse(_corheight.text) ?? 2;
+
+            double _total = quan * uprice;
+            Courier c = Courier(
+              courierName: _corName.text,
+              type: _courierType,
+              unitPrice: uprice,
+              quantity: quan,
+              totalPrice: _total,
+              length: _len,
+              breadth: _breadth,
+              height: _hght,
+              weight: _wgt,
+              origin: _pickupAddress,
+              destination: _destAddress,
+              status: courierStatus.Pending,
+            );
+            await Provider.of<CustomerInfoServices>(context).createCourier(c);
+            print("Courier Booked!!");
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Enter valid Details "),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          }
         },
       ),
     );
@@ -100,6 +150,7 @@ class _CreateShipmentState extends State<CreateShipment> {
 
   Widget addressesCards() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Card(
           child:
@@ -118,7 +169,11 @@ class _CreateShipmentState extends State<CreateShipment> {
     );
   }
 
-  Widget textField({@required String field, TextEditingController controller}) {
+  Widget textField(
+      {@required String field,
+      @required TextEditingController controller,
+      @required TextInputType keyboardType,
+      @required String Function(String) validator}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
@@ -126,6 +181,7 @@ class _CreateShipmentState extends State<CreateShipment> {
         contentPadding: EdgeInsets.zero,
         isDense: true,
       ),
+      validator: validator,
       cursorColor: Theme.of(context).primaryColor,
     );
   }
@@ -137,7 +193,7 @@ class _CreateShipmentState extends State<CreateShipment> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AddAddress(),
+          // AddNewAddressWidget(),
           //Pickup address
           FormField<Address>(
             builder: (FormFieldState<Address> state) {
@@ -176,7 +232,10 @@ class _CreateShipmentState extends State<CreateShipment> {
                         },
                       );
                     },
-                    items: addresses.map(
+                    items: Provider.of<CustomerInfoServices>(context)
+                        .customerData
+                        .fetchedAddress
+                        .map(
                       (Address value) {
                         return DropdownMenuItem<Address>(
                           value: value,
@@ -196,84 +255,65 @@ class _CreateShipmentState extends State<CreateShipment> {
 
   Widget _deliveryAddressField() {
     return Container(
-      padding: EdgeInsets.all(15.w),
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.all(10.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              Icon(Icons.wysiwyg_outlined),
-              //Horizontal Space
-              SizedBox(
-                width: 5.w,
-              ),
-              Text(
-                "Delivery Address",
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),
-              ),
-            ],
-          ),
-          // Vertical Space
-          spacer,
-          textField(
-            field: "Reciever's Name*",
-          ), //1
-          // Vertical Space
-          spacer,
-          textField(
-            field: "Phone Number*",
-          ), //2
-          // Vertical Space
-          spacer,
-          textField(
-            field: "House No.*",
-          ), //3
-          // Vertical Space
-          spacer,
-          textField(
-            field: "Street No. and Landmark*",
-          ), //4
-          // Vertical Space
-          spacer,
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Flexible(
-                child: textField(
-                  field: "Pincode*",
+          // AddNewAddressWidget(),
+          //Pickup address
+          FormField<Address>(
+            builder: (FormFieldState<Address> state) {
+              return InputDecorator(
+                decoration: InputDecoration(
+                  labelText: "Delivery Address**",
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
+                  ),
+                  errorStyle: TextStyle(
+                    color: Colors.redAccent,
+                    fontSize: 16.sp,
+                  ),
+                  hintText: 'Please select delivery address',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                    borderSide: BorderSide(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
-              ), //5
-              //Horizontal Space
-              SizedBox(
-                width: 10.w,
-              ),
-              Flexible(
-                child: textField(
-                  field: "City*",
+                isEmpty: _pickupAddress.addressTag == "",
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<Address>(
+                    value: _destAddress,
+                    isDense: true,
+                    onChanged: (Address newValue) {
+                      setState(
+                        () {
+                          _pickupAddress = newValue;
+                          state.didChange(newValue);
+                          print(
+                              "Delivery ${newValue.addressTag} selected: ${newValue.addressString()}");
+                        },
+                      );
+                    },
+                    items: Provider.of<CustomerInfoServices>(context)
+                        .customerData
+                        .fetchedAddress
+                        .map(
+                      (Address value) {
+                        return DropdownMenuItem<Address>(
+                          value: value,
+                          child: Text(value.addressTag),
+                        );
+                      },
+                    ).toList(),
+                  ),
                 ),
-              ), //6
-            ],
-          ),
-          // Vertical Space
-          spacer,
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Flexible(
-                child: textField(
-                  field: "State*",
-                ),
-              ), //7
-              //Horizontal Space
-              SizedBox(
-                width: 10.w,
-              ),
-              Flexible(
-                child: textField(
-                  field: "Country*",
-                ),
-              ), //8
-            ],
+              );
+            },
           ),
         ],
       ),
@@ -305,6 +345,14 @@ class _CreateShipmentState extends State<CreateShipment> {
             spacer,
             textField(
               field: "Add Product/Courier Name*",
+              keyboardType: TextInputType.name,
+              controller: _corName,
+              validator: (value) {
+                if (_corName.text.length >= 3) {
+                  return null;
+                }
+                return "Enter name atleast with 3 characters";
+              },
             ), //1
             // Vertical Space
             spacer,
@@ -313,7 +361,15 @@ class _CreateShipmentState extends State<CreateShipment> {
               children: [
                 Flexible(
                   child: textField(
+                    keyboardType: TextInputType.number,
                     field: "Add Unit Price*",
+                    controller: _corUnitPrice,
+                    validator: (value) {
+                      if (double.tryParse(_corUnitPrice.text) != null) {
+                        return null;
+                      }
+                      return "Enter valid price";
+                    },
                   ),
                 ), //5
                 //Horizontal Space
@@ -322,7 +378,15 @@ class _CreateShipmentState extends State<CreateShipment> {
                 ),
                 Flexible(
                   child: textField(
+                    keyboardType: TextInputType.number,
                     field: "Add Quantity*",
+                    controller: _corQuantity,
+                    validator: (value) {
+                      if (int.tryParse(_corQuantity.text) != null) {
+                        return null;
+                      }
+                      return "Enter valid number";
+                    },
                   ),
                 ), //6
               ],
@@ -337,10 +401,18 @@ class _CreateShipmentState extends State<CreateShipment> {
                 Flexible(
                   child: textField(
                     field: "Weight*",
+                    keyboardType: TextInputType.number,
+                    controller: _corWeight,
+                    validator: (value) {
+                      if (double.tryParse(_corWeight.text) != null) {
+                        return null;
+                      }
+                      return "Enter valid number";
+                    },
                   ),
                 ),
                 Text(
-                  "(cm)",
+                  "(kg)",
                   style: TextStyle(
                     color: Colors.black,
                   ),
@@ -376,8 +448,16 @@ class _CreateShipmentState extends State<CreateShipment> {
                     ),
                     Flexible(
                       child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: _corlen,
                         decoration:
                             InputDecoration(hintText: "L", isDense: true),
+                        validator: (value) {
+                          if (double.tryParse(_corlen.text) != null) {
+                            return null;
+                          }
+                          return "Enter valid number";
+                        },
                       ),
                     ),
                     //Horizontal Space
@@ -398,6 +478,14 @@ class _CreateShipmentState extends State<CreateShipment> {
                       child: TextFormField(
                         decoration:
                             InputDecoration(hintText: "B", isDense: true),
+                        keyboardType: TextInputType.number,
+                        controller: _corbreadth,
+                        validator: (value) {
+                          if (double.tryParse(_corbreadth.text) != null) {
+                            return null;
+                          }
+                          return "Enter valid number";
+                        },
                       ),
                     ),
                     //Horizontal Space
@@ -418,6 +506,14 @@ class _CreateShipmentState extends State<CreateShipment> {
                       child: TextFormField(
                         decoration:
                             InputDecoration(hintText: "H", isDense: true),
+                        controller: _corheight,
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (double.tryParse(_corheight.text) != null) {
+                            return null;
+                          }
+                          return "Enter valid number";
+                        },
                       ),
                     ),
                     Text(
@@ -470,7 +566,9 @@ class _CreateShipmentState extends State<CreateShipment> {
                   inactiveFgColor: Colors.black,
                   labels: ["Document", "Non-Document"],
                   onToggle: (index) {
-                    _courierType = (index == 0) ? "Document" : 'Non-Document';
+                    _courierType = (index == 0)
+                        ? courierType.Document
+                        : courierType.Nondocument;
                   },
                 ),
                 SizedBox(
@@ -482,17 +580,6 @@ class _CreateShipmentState extends State<CreateShipment> {
                   color: Colors.grey[400],
                 ),
                 spacer,
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Total: ", //TODO:${unitPrice * Quantity}",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20.sp,
-                    ),
-                  ),
-                ),
               ],
             ),
           ],
