@@ -28,9 +28,9 @@ Future<Customer> fetchCustomerDetails(
   } else {
     _cust = Customer.fromJson(_custDocSnapshot);
   }
-  if (_cust.name != null)
-    Provider.of<CustomerInfoServices>(context, listen: false).hasProfileData =
-        true;
+  if (_cust.uid != null) {
+    Provider.of<CustomerInfoServices>(context, listen: false).updateCustData();
+  }
   return _cust;
 }
 

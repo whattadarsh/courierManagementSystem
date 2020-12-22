@@ -1,5 +1,6 @@
 import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/cust_drawer.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
+import 'package:couriermanagementsystem/shared/loading_screens/animated_loading_homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class _WelcomePageState extends State<WelcomePage> {
     scaffoldKey = new GlobalKey<ScaffoldState>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<CustomerInfoServices>(context, listen: false)
-          .register(context);
+          .registerOrFetch(context);
     });
     super.initState();
   }
@@ -164,7 +165,17 @@ class _WelcomePageState extends State<WelcomePage> {
       drawer: DrawerWidget(),
       // Disable opening the drawer with a swipe gesture.
       // drawerEnableOpenDragGesture: false,
-      body: _body,
+      body: Consumer<CustomerInfoServices>(
+        builder: (context, value, _) {
+          return (value.hasProfileData)
+              ? _body
+              : Scaffold(
+                  body: SafeArea(
+                    child: AnimatedLoadingHomeScreen(),
+                  ),
+                );
+        },
+      ),
     );
   }
 }

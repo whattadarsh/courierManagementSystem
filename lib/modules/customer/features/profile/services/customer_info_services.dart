@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/customer_model.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,7 @@ class CustomerInfoServices extends ChangeNotifier {
     );
   }
 
-  Future<void> register(BuildContext context) async {
+  Future<void> registerOrFetch(BuildContext context) async {
     ///fetch user details from firebase
     this.customerData = await fetchCustomerDetails(this.customerData, context);
     notifyListeners();
@@ -34,12 +36,23 @@ class CustomerInfoServices extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateCustData() {
+    this.customerData.fetchAddressses();
+    this.customerData.fetchCouriers();
+    this.hasProfileData = true;
+    notifyListeners();
+  }
+
   void removeAddress(int index) {
     this.customerData.removeAddr(index);
     this.updateUserInfoData();
     notifyListeners();
   }
 
+  Future<void> createCourier(Courier c) async {
+    FirebaseFirestore _db = FirebaseFirestore.instance;
+    await _db.collection("couriers").add(c.toJson());
+  }
   // void resetUserId() {
   //   this.customerData = null;
   //   removeUserId();

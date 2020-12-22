@@ -1,4 +1,5 @@
 import 'package:couriermanagementsystem/core/screens/aboutus.dart';
+import 'package:couriermanagementsystem/modules/customer/features/address/screens/addresses.dart';
 import 'package:flutter/material.dart';
 
 List<Map<String, Object>> menuData = [
@@ -9,13 +10,13 @@ List<Map<String, Object>> menuData = [
   },
   {
     'icon': Icons.analytics_outlined,
-    'navigateTo': Aboutus.routeName,
-    'title': 'Your employees',
+    'navigateTo': MyAddresses.routeName,
+    'title': 'Your Addresses',
   },
   {
     'icon': Icons.delivery_dining,
-    'navigateTo': Aboutus.routeName,
-    'title': 'Your accepted Couriers',
+    'navigateTo': Aboutus.routeName, //TODO: Show orders
+    'title': 'Your Shipments',
   },
   {
     'icon': Icons.info_outline,
