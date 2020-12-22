@@ -3,7 +3,6 @@ import 'package:couriermanagementsystem/modules/admin/features/detail_pages/scre
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
 
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
 

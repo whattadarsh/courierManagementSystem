@@ -144,7 +144,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       onPressed: () async {
-                        //TODO: Redirect to Welcome Page after validation from DB
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
                           print("Validated: " + _email.text + "," + _pswd.text);

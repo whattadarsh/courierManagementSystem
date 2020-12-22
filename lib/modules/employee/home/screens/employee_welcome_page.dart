@@ -54,7 +54,7 @@ class _EmployeeWelcomePageState extends State<EmployeeWelcomePage> {
           ),
           // children: [
           //   TextSpan(
-          //     text: "user!", //TODO: Change with customer name if logged in
+          //     text: "employee!", //TODO: Change with employee name if logged in
           //     style: TextStyle(
           //       fontSize: 25.sp,
           //       fontWeight: FontWeight.w700,

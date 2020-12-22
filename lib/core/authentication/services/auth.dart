@@ -55,8 +55,6 @@ class AuthService {
     print('signInEmail succeeded: ${user.uid}');
 
     if (user != null && (user.uid == currentUser.uid)) {
-      //TODO: Show a form to fill these fields after login
-      //TODO: Create db entry of user
       switch (role) {
         case "Customer":
           Provider.of<CustomerInfoServices>(context, listen: false).setUser(

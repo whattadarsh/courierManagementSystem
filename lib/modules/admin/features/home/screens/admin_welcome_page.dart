@@ -54,7 +54,7 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
           ),
           children: [
             TextSpan(
-              text: "admin!", //TODO: Change with customer name if logged in
+              text: "admin!", //TODO: Change with admin name if logged in
               style: TextStyle(
                 fontSize: 25.sp,
                 fontWeight: FontWeight.w700,

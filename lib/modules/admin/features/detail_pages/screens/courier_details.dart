@@ -62,14 +62,14 @@ class _CourierDetailsState extends State<CourierDetails> {
         child: Container(
           child: Consumer<EditCourier>(
             builder: (context, courierEditedDetails, _) {
-              var c = courierEditedDetails.courier;
+              var _cour = courierEditedDetails.courier;
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ///courierName
                   Text(
-                    "${courierEditedDetails.courier.courierName}" ?? "",
+                    "${_cour.courierName}" ?? "",
                     style: TextStyle(
                       fontFamily: 'Raleway',
                       fontSize: 20.sp,
@@ -115,8 +115,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                           SizedBox(
                             width: 10.h,
                           ),
-                          buildPara(
-                              title: courierEditedDetails.courier.cid ?? ""),
+                          buildPara(title: _cour.cid ?? ""),
                         ],
                       ),
                     ),
@@ -139,8 +138,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                           width: 10.h,
                         ),
                         buildPara(
-                            title: EnumToString.convertToString(
-                                    courierEditedDetails.courier.status) ??
+                            title: EnumToString.convertToString(_cour.status) ??
                                 ""),
                       ],
                     ),
@@ -162,9 +160,8 @@ class _CourierDetailsState extends State<CourierDetails> {
                           width: 10.h,
                         ),
                         buildPara(
-                            title: EnumToString.convertToString(
-                                    courierEditedDetails.courier.type) ??
-                                ""),
+                            title:
+                                EnumToString.convertToString(_cour.type) ?? ""),
                       ],
                     ),
                   ),
@@ -186,7 +183,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                         ),
                         buildPara(
                             title:
-                                "${courierEditedDetails.courier.length.toString()} x ${courierEditedDetails.courier.breadth.toString()} x ${courierEditedDetails.courier.height.toString()}" ??
+                                "${_cour.length.toString()} x ${_cour.breadth.toString()} x ${_cour.height.toString()}" ??
                                     ""),
                       ],
                     ),
@@ -206,10 +203,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                         SizedBox(
                           width: 10.h,
                         ),
-                        buildPara(
-                            title:
-                                "${courierEditedDetails.courier.weight.toString()}" ??
-                                    ""),
+                        buildPara(title: "${_cour.weight.toString()}" ?? ""),
                       ],
                     ),
                   ),
@@ -222,10 +216,9 @@ class _CourierDetailsState extends State<CourierDetails> {
                   SizedBox(
                     height: 10.h,
                   ),
-                  if ((courierEditedDetails.courier.deliveryMan != null) &&
-                      (courierEditedDetails.courier.expectedDeliveryDate !=
-                          null))
-                    ...showDeliveryDetails(courierEditedDetails.courier)
+                  if ((_cour.deliveryMan != null) &&
+                      (_cour.expectedDeliveryDate != null))
+                    ...showDeliveryDetails(_cour)
                   else
                     Row(
                       children: [
@@ -259,7 +252,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  ...showBill(courierEditedDetails.courier),
+                  ...showBill(_cour),
 
                   ///Addresses
                   ///Sender
@@ -267,10 +260,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                   SizedBox(
                     height: 10.h,
                   ),
-                  buildPara(
-                      title:
-                          courierEditedDetails.courier.origin.addressString() ??
-                              ""),
+                  buildPara(title: _cour.origin.addressString() ?? ""),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -280,10 +270,7 @@ class _CourierDetailsState extends State<CourierDetails> {
                   SizedBox(
                     height: 10.h,
                   ),
-                  buildPara(
-                      title: courierEditedDetails.courier.destination
-                              .addressString() ??
-                          ""),
+                  buildPara(title: _cour.destination.addressString() ?? ""),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -296,7 +283,7 @@ class _CourierDetailsState extends State<CourierDetails> {
       floatingActionButton: (role != "Customer")
           ? FloatingActionButton(
               onPressed: () {
-                //TODO:Change details
+                //TODO:Change details in database
                 changeCouierDetails(context);
               },
               child: Icon(

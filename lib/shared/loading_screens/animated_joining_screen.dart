@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'animated_loading_homepage.dart';
-import 'new_animated_loading_screen.dart';
 
 class AnimatedJoiningScreen extends StatefulWidget {
   const AnimatedJoiningScreen({

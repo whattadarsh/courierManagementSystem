@@ -2,8 +2,6 @@ import 'package:couriermanagementsystem/modules/admin/features/detail_pages/scre
 import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_employees.dart';
 import 'package:couriermanagementsystem/modules/employee/home/screens/employee_welcome_page.dart';
 import 'package:couriermanagementsystem/shared/loading_screens/animated_joining_screen.dart';
-import 'package:couriermanagementsystem/shared/loading_screens/animated_loading_homepage.dart';
-import 'package:couriermanagementsystem/shared/loading_screens/new_animated_loading_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +58,7 @@ class MyApp extends StatelessWidget {
 
         // Once complete, show  application
         if (snapshot.connectionState == ConnectionState.done) {
-          return OnboardingPage(); //AnimatedLoadingHomeScreen();
+          return OnboardingPage(); 
         }
 
         // Otherwise, show something whilst waiting for initialization to complete

@@ -1,7 +1,6 @@
 import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/cust_drawer.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:couriermanagementsystem/shared/loading_screens/animated_loading_homepage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

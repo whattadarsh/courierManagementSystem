@@ -12,7 +12,6 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   String role;
-  GlobalKey<ScaffoldState> _scaffoldKey;
   TextEditingController _name, _phoneNo, _email, _pswd;
   GlobalKey<FormState> _formKey;
   @override
@@ -22,7 +21,6 @@ class _SignupState extends State<Signup> {
     _email = new TextEditingController();
     _pswd = new TextEditingController();
     _formKey = new GlobalKey<FormState>();
-    _scaffoldKey = new GlobalKey<ScaffoldState>();
     role = "";
     super.initState();
   }
@@ -200,7 +198,6 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       onPressed: () {
-                        //TODO: Register User and redirect to Welcome Page
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
                           print("Validated: " + _email.text + "," + _pswd.text);
