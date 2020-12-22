@@ -8,14 +8,9 @@ List<Map<String, Object>> menuData = [
     'title': 'Home',
   },
   {
-    'icon': Icons.analytics_outlined,
-    'navigateTo': Aboutus.routeName,
-    'title': 'Your employees',
-  },
-  {
     'icon': Icons.delivery_dining,
     'navigateTo': Aboutus.routeName,
-    'title': 'Your accepted Couriers',
+    'title': 'Your Assigned Couriers',
   },
   {
     'icon': Icons.info_outline,

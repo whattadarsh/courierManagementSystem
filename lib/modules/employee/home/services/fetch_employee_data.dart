@@ -1,41 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/customer_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'employee_info_services.dart';
 
-///Method to upload the fields of cust
-Future<void> createCustomer(Customer cust) async {
+///Method to upload the fields of emp
+Future<void> createEmployee(Employee emp) async {
   FirebaseFirestore _db = FirebaseFirestore.instance;
   await _db
-      .collection("customers")
-      .doc(cust.uid)
-      .set(cust.toJson(), SetOptions(merge: true));
+      .collection("employees")
+      .doc(emp.eid)
+      .set(emp.toJson(), SetOptions(merge: true));
 }
 
 ///Method to fetch the cust data
-Future<Customer> fetchCustomerDetails(
-    Customer cust, BuildContext context) async {
-  Customer _cust;
+Future<Employee> fetchEmployeeDetails(
+    Employee emp, BuildContext context) async {
+  Employee _emp;
   FirebaseFirestore _db = FirebaseFirestore.instance;
-  DocumentSnapshot _custDocSnapshot =
-      await _db.collection("customers").doc(cust.uid).get();
-  if (_custDocSnapshot.data == null) {
-    ///New cust Upload Details
-    await createCustomer(cust);
-    _custDocSnapshot = await _db.collection("customers").doc(cust.uid).get();
-    _cust = Customer.fromJson(_custDocSnapshot);
+  DocumentSnapshot _empDocSnapshot =
+      await _db.collection("employees").doc(emp.eid).get();
+  if (_empDocSnapshot.exists == false) {
+    ///New emp Upload Details
+    await createEmployee(emp);
+    _empDocSnapshot = await _db.collection("employees").doc(emp.eid).get();
+    _emp = Employee.fromJson(_empDocSnapshot);
   } else {
-    _cust = Customer.fromJson(_custDocSnapshot);
+    _emp = Employee.fromJson(_empDocSnapshot);
   }
-  if (_cust.name != null)
-    Provider.of<CustomerInfoServices>(context, listen: false).hasProfileData =
+  if (_emp.name != null)
+    Provider.of<EmployeeInfoServices>(context, listen: false).hasProfileData =
         true;
-  return _cust;
+  return _emp;
 }
 
-///Method to update the fields of cust
-Future<void> updateCustomer(Customer cust) async {
+///Method to update the fields of emp
+Future<void> updateEmployee(Employee emp) async {
   FirebaseFirestore _db = FirebaseFirestore.instance;
-  await _db.collection("customers").doc(cust.uid).update(cust.toJson());
+  await _db.collection("employees").doc(emp.eid).update(emp.toJson());
 }

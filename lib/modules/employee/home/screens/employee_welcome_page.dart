@@ -1,6 +1,7 @@
 import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
 import 'package:couriermanagementsystem/modules/employee/drawer/widgets/emp_drawer.dart';
 import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
+import 'package:couriermanagementsystem/modules/employee/home/services/employee_info_services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,27 +9,26 @@ import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:couriermanagementsystem/core/data/dummy_data.dart';
 
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:provider/provider.dart';
 
-class AdminWelcomePage extends StatefulWidget {
-  static const routeName = "/AdminWelcomePage";
+class EmployeeWelcomePage extends StatefulWidget {
+  static const routeName = "/EmployeeWelcomePage";
 
   @override
-  _AdminWelcomePageState createState() => _AdminWelcomePageState();
+  _EmployeeWelcomePageState createState() => _EmployeeWelcomePageState();
 }
 
-class _AdminWelcomePageState extends State<AdminWelcomePage> {
+class _EmployeeWelcomePageState extends State<EmployeeWelcomePage> {
   GlobalKey<ScaffoldState> scaffoldKey;
   String role;
   @override
   void initState() {
     scaffoldKey = new GlobalKey<ScaffoldState>();
     role = "";
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-    //   var user = FirebaseAuth.instance.currentUser;
-    //   Provider.of<AdminInfoServices>(context, listen: false)
-    //       .setUserId(userId: user.uid, email: user.email, context: context);
-    //
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<EmployeeInfoServices>(context, listen: false)
+          .registerOrFetch(context);
+    });
     super.initState();
   }
 
@@ -123,45 +123,45 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
                 height: 10.h,
               ),
               //Show Employees
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //Vertical Space
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(8.w),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Your Employees",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        color: appThemeColor6,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  //Vertical Space
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  generateEmployees(),
-                  //Vertical Space
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    color: Colors.black,
-                    height: 2.h,
-                  ),
-                  //Vertical Space
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                ],
-              ),
+              // Column(
+              //   mainAxisSize: MainAxisSize.min,
+              //   children: [
+              //     //Vertical Space
+              //     SizedBox(
+              //       height: 20.h,
+              //     ),
+              //     Container(
+              //       padding: EdgeInsets.all(8.w),
+              //       alignment: Alignment.centerLeft,
+              //       child: Text(
+              //         "Your Employees",
+              //         style: TextStyle(
+              //           fontSize: 20.sp,
+              //           color: appThemeColor6,
+              //           fontWeight: FontWeight.w700,
+              //         ),
+              //       ),
+              //     ),
+              //     //Vertical Space
+              // //     SizedBox(
+              // //       height: 10.h,
+              //     ),
+              //     generateEmployees(),
+              //     //Vertical Space
+              //     SizedBox(
+              //       height: 10.h,
+              //     ),
+              //     Container(
+              //       width: double.infinity,
+              //       color: Colors.black,
+              //       height: 2.h,
+              //     ),
+              //     //Vertical Space
+              //     SizedBox(
+              //       height: 10.h,
+              //     ),
+              //   ],
+              // ),
 
               /// Widget to show more features of the app
               Column(
@@ -256,7 +256,7 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Couriers Assigned: ${c.assignedCouriers.length + 5}",
+                      "Couriers Assigned: ${c.assignedCouriers.length}",
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
@@ -266,13 +266,13 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
                     SizedBox(
                       height: 5.h,
                     ),
-                    Text(
-                      "Employee Code: ${c.eid}",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    // Text(
+                    //   "Employee Code: ${c.eid}",
+                    //   style: TextStyle(
+                    //     fontSize: 20.sp,
+                    //     fontWeight: FontWeight.w700,
+                    //   ),
+                    // ),
                   ],
                 ),
                 //Vertical Space
@@ -297,6 +297,7 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
         return Card(
           margin: EdgeInsets.all(10.w),
           child: Container(
+            padding: EdgeInsets.all(10),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -311,28 +312,37 @@ class _AdminWelcomePageState extends State<AdminWelcomePage> {
                 SizedBox(
                   height: 5.h,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Origin: ${c.origin.pincode}",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    //Vertical Space
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                    Text(
-                      "destination: ${c.destination.pincode}",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "Origin: ${c.origin.addressString()}",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                //Vertical Space
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  "\nDestination: ${c.destination.addressString()}",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  "Amount to Collect: ${c.totalPrice.toString()}",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                //Vertical Space
+                SizedBox(
+                  height: 5.h,
                 ),
                 //Vertical Space
                 SizedBox(

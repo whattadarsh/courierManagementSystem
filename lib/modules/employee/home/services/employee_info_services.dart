@@ -7,33 +7,33 @@ import 'package:flutter/material.dart';
 import 'fetch_employee_data.dart';
 
 class EmployeeInfoServices extends ChangeNotifier {
-  // Employee customerData;
-  // bool hasProfileData = false;
-  // Future<void> setUserId(
-  //     {String userId, String email, BuildContext context}) async {
-  //   this.customerData = new Employee(
-  //     eid: userId,
-  //     name: "John Doe",
-  //     email: email,
-  //     phoneNumber: "1234567890",
-  //   );
+  Employee employeeData;
+  bool hasProfileData = false;
+  Future<void> setEmployee(
+      {@required String userId,
+      @required String name,
+      @required String email,
+      @required String phoneNo,
+      @required BuildContext context}) async {
+    this.employeeData = new Employee(
+      eid: userId,
+      name: name,
+      email: email,
+      phoneNumber: phoneNo,
+    );
+  }
 
-  //   ///fetch user details from firebase
-  //   this.customerData = await fetchCustomerDetails(this.customerData, context);
-  //   notifyListeners();
-  // }
+  Future<void> registerOrFetch(BuildContext context) async {
+    ///fetch user details from firebase
+    this.employeeData = await fetchEmployeeDetails(this.employeeData, context);
+    notifyListeners();
+  }
 
   // Future<void> updateCourierStatus(Address _newAddress) async {
   //   this.customerData.addAddr(_newAddress);
   //   await this.updateUserInfoData();
   //   notifyListeners();
   // }
-
-  // // void resetUserId() {
-  // //   this.customerData = null;
-  // //   removeUserId();
-  // //   notifyListeners();
-  // // }
 
   // Future<void> updateUserInfoData() async {
   //   await updateCustomer(this.customerData);
