@@ -1,70 +1,71 @@
 # Courier Management System
 
-## Actors /Users of the System
+## Actors/Users of the System
 
 1. Admin
-2. Offices/Branches
+2. Offices/Branches Employees
 3. Customers
 
 ### Common
 
-- [X] Onboarding Page or Deails page of Facilities Provided by us
+- [x] Onboarding Page or Deails page of Facilities Provided by us
 
 ### ADMIN
 
-- Login
-- Admin can manage & update whole data
-- Update Profile
+- [x] Login
+- [x] Admin can manage & update whole data
+- [ ] Update Profile
 - **Manage Offices**
-  - Add Offices.
-  - Edit/Update Offices
-- **Manage Managers**
-  - Add Managers(for the recently created Branch)
-  - View/Edit/Update Managers
+  - [ ] Add Offices.
+  - [ ] Edit/Update Offices
+- **Manage Employees**
+  - [ ] Add Employees(for the recently created Branch)
+  - [x] View/Edit/Update Employees
 - **Manage Shipment**
-  - Add Shipper info, Receiver info and Shipment info.
-  - Edit/Update Shipment
-  - List all Shipment
-  - Search By Consignment Number
+  - [ ] Add Shipper info, Receiver info and Shipment info.
+  - [x] Edit/Update Shipment
+  - [x] List all Shipment
+  - [x] Search By Consignment Number
 - **Reports of the project**
-  - Report of all customer
-  - Report of all consignment
-  - Report of all shipper
-  - Report of all pickup Date/Time
-  - Report of all status
+  - [x] Report of all employees
+  - [x] Report of all consignment
+  - [ ] Report of all shipper
+  - [ ] Report of all customer
+  - [ ] Report of all pickup Date/Time
+  - [x] Report of all delivery Date/Time
+  - [x] Report of all courier status
+  - [ ] Report of all status
 
-### Offices/Branch
+### Offices/Branch Employeess
 
 - **Update Profile**
 - **Manage Shipment(their Own Branch Customers)**
-  - Add Shipper info, Receiver info and Shipment info.
-  - Edit/Update Shipment
-  - List own Shipment
-  - Search By Consignment Number
+  - [ ] Add/Manage Shipper info, Receiver info and Shipment info.
+  - [x] Edit/Update Shipment
+  - [x] List own Shipment
+  - [x] Search By Consignment Number
 - **Reports of their Own Branch Customers**
-  - Report of their own customer
-  - Report of consignment
-  - Report of all shipper
-  - Report of all pickup Date/Time
-  - Report of all status
+  - [ ] Report of their own customer
+  - [ ] Report of consignment
+  - [ ] Report of all shipper
+  - [ ] Report of all pickup Date/Time
+  - [x] Report of all courier status
+  - [ ] Report of all status
 
 ### Customers(Users)
 
-- With Limited Access
-- Users can check status of their product after placing orders.
-  TODOs:
-- [ ] Track Orders (With Reciept No.)
-  - [x] Create Welcome Page (Welcome User)
-  - [x] Tracking Page (Write at home page)
-  - [x] Signing option at bottom to place orders
-  - [x] Create page for placing courier order
-  - [x] forms
-  - [x] Create drawer
-    - [x] Add profile option
-    - [x] Shipment History
-    - [x] Contact us
-  - [ ] Auth Page (Google)
-  - [ ] Create User in Firebase
-  <!-- - [ ] (Add location feature (copy form urban culture)) -->
+- [x] Users can check status of their product after placing orders.
+- [x] Track Orders (With Reciept No.)
+- [x] Create Welcome Page (Welcome User)
+- [x] Tracking Page (Write at home page)
+- [x] Signing option at bottom to place orders
+- [x] Create page for placing courier order
+- [x] forms
+- [x] Create drawer
+- [x] Add profile option
+- [x] Shipment History
+- [x] Contact us
+- [x] Auth Page
+- [x] Register User in Firebase
 - [x] Create Order (Sign in Required)
-- [ ] Add account details()
+- [ ] Add/Update account details
