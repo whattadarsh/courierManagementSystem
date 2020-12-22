@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class Address {
+  String id;
   final String name,
       mobile,
       country,
@@ -10,9 +12,8 @@ class Address {
       state,
       addressTag;
 
-  ///Enhancment: Implement these two as advanced feature along with map
-  // final double longitude, latitude;
   Address({
+    this.id,
     @required this.name, //1
     @required this.mobile, //2
     @required this.houseNoAndLandmark, //3
@@ -20,12 +21,12 @@ class Address {
     @required this.state, //5
     @required this.country, //6
     @required this.pincode, //7
-    @required this.addressTag, //8
-    // @required this.longitude,//9
-    // @required this.latitude,//10
+    @required this.addressTag, //
   });
-  factory Address.fromJson(Map<String, dynamic> parsedJson) {
+  factory Address.fromJson(
+      {@required Map<String, dynamic> parsedJson, String id = ""}) {
     return Address(
+        id: id,
         name: parsedJson['name'],
         mobile: parsedJson['mobile'],
         houseNoAndLandmark: parsedJson['houseNoAndLandmark'],
@@ -33,10 +34,7 @@ class Address {
         state: parsedJson['state'],
         country: parsedJson['country'],
         pincode: parsedJson['pincode'],
-        addressTag: parsedJson['addressTag']
-        // longitude: parsedJson['longitude'],
-        // latitude: parsedJson['latitude'],
-        );
+        addressTag: parsedJson['addressTag']);
   }
   Map<String, dynamic> toJson() => {
         'firstname': name,
@@ -47,8 +45,6 @@ class Address {
         'pincode': pincode,
         'state': state,
         'addressTag': addressTag,
-        // 'longitude': longitude,
-        // 'latitude': latitude,
       };
 
   /// One Line Address
@@ -67,5 +63,12 @@ class Address {
         this.country +
         ", PIN: " +
         this.pincode;
+  }
+
+  Future<String> addAddressToDatabase() async {
+    FirebaseFirestore _db = FirebaseFirestore.instance;
+    DocumentReference addr =
+        await _db.collection("userAddresses").add(this.toJson());
+    return addr.id;
   }
 }
