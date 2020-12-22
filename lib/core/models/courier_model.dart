@@ -70,8 +70,8 @@ class Courier {
   /// Deserailization of Courier
   factory Courier.fromJson(DocumentSnapshot _snapshot) {
     Map<String, dynamic> _parsedJson = _snapshot.data();
-    Address _origin = Address.fromJson(_parsedJson["origin"]),
-        _destination = Address.fromJson(_parsedJson["destination"]);
+    Address _origin = Address.fromJson(parsedJson: _parsedJson["origin"]),
+        _destination = Address.fromJson(parsedJson: _parsedJson["destination"]);
     Employee _deliveryMan = Employee.fromJson(_parsedJson['deliveryMan']);
     DateTime _expDel = DateTime(_parsedJson['expectedDeliveryDate']);
     courierStatus _status =
