@@ -12,6 +12,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   String role;
+  GlobalKey<ScaffoldState> _scaffoldKey;
   TextEditingController _name, _phoneNo, _email, _pswd;
   GlobalKey<FormState> _formKey;
   @override
@@ -21,6 +22,7 @@ class _SignupState extends State<Signup> {
     _email = new TextEditingController();
     _pswd = new TextEditingController();
     _formKey = new GlobalKey<FormState>();
+    _scaffoldKey = new GlobalKey<ScaffoldState>();
     role = "";
     super.initState();
   }
@@ -202,6 +204,7 @@ class _SignupState extends State<Signup> {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
                           print("Validated: " + _email.text + "," + _pswd.text);
+                          showStatus(context);
                           var msg = AuthService().handleSignUp(
                             email: _email.text,
                             password: _pswd.text,
@@ -218,7 +221,6 @@ class _SignupState extends State<Signup> {
                           //         return Container(child: Text("Loading..."));
                           //       });
                           // } else {
-                          //   Navigator.of(context).pop();
                           // }
                         }
                       },
@@ -230,6 +232,58 @@ class _SignupState extends State<Signup> {
           ),
         ),
       ),
+    );
+  }
+
+  void showStatus(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15.h),
+          topRight: Radius.circular(15.h),
+        ),
+      ),
+      builder: (context) {
+        return SingleChildScrollView(
+          physics:
+              AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+          child: Container(
+            padding: EdgeInsets.all(10.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //Vertical Space
+                SizedBox(
+                  height: 20.h,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Please wait verifying details...", //CHECKIT
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        color: Colors.black,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+
+                //Vertical Space
+                SizedBox(
+                  height: 20.h,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

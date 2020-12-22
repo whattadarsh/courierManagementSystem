@@ -14,11 +14,13 @@ class _LoginState extends State<Login> {
   String lottiePath, role;
   TextEditingController _email, _pswd;
   GlobalKey<FormState> _formKey;
+  GlobalKey<ScaffoldState> _scaffoldKey;
   @override
   void initState() {
     _email = new TextEditingController();
     _pswd = new TextEditingController();
     _formKey = new GlobalKey<FormState>();
+    _scaffoldKey = new GlobalKey<ScaffoldState>();
     role = "";
     lottiePath = "assets/lottieFiles/delivery_truck.json";
     super.initState();
@@ -40,9 +42,10 @@ class _LoginState extends State<Login> {
       ),
       allowFontScaling: true,
     );
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      key: _scaffoldKey,
+      body: SafeArea(
+        child: Container(
           padding: EdgeInsets.all(20.w),
           child: SingleChildScrollView(
             physics:
@@ -145,8 +148,13 @@ class _LoginState extends State<Login> {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
                           print("Validated: " + _email.text + "," + _pswd.text);
+                          showStatus(context);
                           var msg = await AuthService().handleSignInEmail(
-                              _email.text, _pswd.text, role, context);
+                            _email.text,
+                            _pswd.text,
+                            role,
+                            context,
+                          );
                           print("User Added: ");
                           // if (msg.toString() == "") {
                           //   showModalBottomSheet(
@@ -155,6 +163,7 @@ class _LoginState extends State<Login> {
                           //         return Container(child: Text("Loading..."));
                           //       });
                           // }
+                          Navigator.of(context).pop();
                         }
                       },
                     ),
@@ -183,6 +192,58 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
+    );
+  }
+
+  void showStatus(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15.h),
+          topRight: Radius.circular(15.h),
+        ),
+      ),
+      builder: (context) {
+        return SingleChildScrollView(
+          physics:
+              AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+          child: Container(
+            padding: EdgeInsets.all(10.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //Vertical Space
+                SizedBox(
+                  height: 20.h,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Please wait verifying details...", //CHECKIT
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        color: Colors.black,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+
+                //Vertical Space
+                SizedBox(
+                  height: 20.h,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
