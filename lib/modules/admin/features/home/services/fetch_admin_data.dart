@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/models/admin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//Project Imports
 import 'admin_info_services.dart';
+import '../models/admin_model.dart';
 
 ///Method to upload the fields of admin
 Future<void> createAdmin(Admin admin) async {

@@ -1,8 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:enum_to_string/enum_to_string.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
+import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
 
 enum courierStatus {
   Pending,

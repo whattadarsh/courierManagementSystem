@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/customer_model.dart';
 import 'package:flutter/material.dart';
 
 //Project Imports
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
 import 'fetch_customer_data.dart';
+import '../models/address_model.dart';
+import '../models/customer_model.dart';
 
 class CustomerInfoServices extends ChangeNotifier {
   Customer customerData;

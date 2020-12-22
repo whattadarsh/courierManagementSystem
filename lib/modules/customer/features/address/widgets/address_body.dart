@@ -1,5 +1,3 @@
-import 'package:couriermanagementsystem/modules/customer/features/address/services/adding_address_provider.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'address_list.dart';
 import 'no_addresses.dart';
 import 'add_new_address.dart';
+import '../services/adding_address_provider.dart';
+import '../../profile/services/customer_info_services.dart';
 
 class AddressBody extends StatefulWidget {
   @override

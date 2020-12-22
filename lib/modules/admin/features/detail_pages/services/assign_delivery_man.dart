@@ -1,11 +1,13 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+///Project Imports
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
+
 import 'courier_editing_services.dart';
+import '../widgets/helper_widgets.dart';
 
 //CHECKIT
 class AssignEmployee extends StatefulWidget {

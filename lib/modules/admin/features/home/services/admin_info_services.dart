@@ -1,8 +1,8 @@
-import 'package:couriermanagementsystem/modules/admin/features/home/models/admin_model.dart';
 import 'package:flutter/material.dart';
 
 //Project Imports
 import 'fetch_admin_data.dart';
+import '../models/admin_model.dart';
 
 class AdminInfoServices extends ChangeNotifier {
   Admin adminData;

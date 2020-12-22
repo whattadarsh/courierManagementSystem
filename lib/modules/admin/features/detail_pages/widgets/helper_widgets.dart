@@ -1,6 +1,8 @@
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
 
 List<Widget> showDeliveryDetails(Courier _courier) {
   return [

@@ -1,12 +1,14 @@
-import 'package:couriermanagementsystem/modules/customer/features/drawer/widgets/cust_drawer.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
-import 'package:couriermanagementsystem/shared/loading_screens/animated_loading_homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../tracking_page/widgets/more_on_courierway.dart';
+///Project Imports
+import 'package:couriermanagementsystem/shared/loading_screens/animated_loading_homepage.dart';
+
+import '../drawer/widgets/cust_drawer.dart';
 import '../tracking_page/widgets/tracking_widget.dart';
+import '../profile/services/customer_info_services.dart';
+import '../tracking_page/widgets/more_on_courierway.dart';
 
 class WelcomePage extends StatefulWidget {
   static const routeName = "/WelcomePage";

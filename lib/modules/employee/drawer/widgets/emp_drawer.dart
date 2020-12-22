@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
-import 'package:couriermanagementsystem/core/screens/contact_us.dart';
-import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
+
+///Project Imports
+import '../../../../shared/theme.dart';
+import '../../../../core/screens/contact_us.dart';
+import '../../../../core/authentication/services/auth.dart';
+import '../../../../modules/customer/features/drawer/data/drawer_menu_data.dart';
 
 class EmpDrawerWidget extends StatefulWidget {
   static const routeName = "/EmpDrawerWidget";

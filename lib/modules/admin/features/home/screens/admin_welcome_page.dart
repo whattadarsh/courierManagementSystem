@@ -1,11 +1,14 @@
-import 'package:couriermanagementsystem/modules/admin/features/drawer/widgets/admin_drawer.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/services/admin_info_services.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/widgets/couriers_list.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
+
+import '../widgets/couriers_list.dart';
+import '../widgets/employee_list.dart';
+import '../services/admin_info_services.dart';
+import '../../drawer/widgets/admin_drawer.dart';
 
 class AdminWelcomePage extends StatefulWidget {
   static const routeName = "/AdminWelcomePage";

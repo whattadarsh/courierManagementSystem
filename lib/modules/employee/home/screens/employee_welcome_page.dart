@@ -1,15 +1,15 @@
-import 'package:couriermanagementsystem/modules/customer/features/tracking_page/widgets/tracking_widget.dart';
-import 'package:couriermanagementsystem/modules/employee/drawer/widgets/emp_drawer.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
-import 'package:couriermanagementsystem/modules/employee/home/services/employee_info_services.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import '../../../../shared/theme.dart';
+import '../../drawer/widgets/emp_drawer.dart';
+import '../../home/models/employee_model.dart';
+import '../../../../core/data/dummy_data.dart';
+import '../../../../core/models/courier_model.dart';
+import '../../home/services/employee_info_services.dart';
+import '../../../customer/features/tracking_page/widgets/tracking_widget.dart';
 
 class EmployeeWelcomePage extends StatefulWidget {
   static const routeName = "/EmployeeWelcomePage";

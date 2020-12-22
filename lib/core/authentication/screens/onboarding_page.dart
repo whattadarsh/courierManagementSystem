@@ -1,7 +1,9 @@
-import 'package:couriermanagementsystem/core/authentication/screens/login_page.dart';
-import 'package:couriermanagementsystem/core/authentication/widgets/entry_point.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'login_page.dart';
+import '../widgets/entry_point.dart';
 
 class OnboardingPage extends StatefulWidget {
   static const routeName = "/OnboardingPage";

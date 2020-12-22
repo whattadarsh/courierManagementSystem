@@ -1,9 +1,12 @@
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
+import '../widgets/helper_widgets.dart';
+import '../services/courier_editing_services.dart';
 
 class SetDeliveryDate extends StatefulWidget {
   final Courier courier;

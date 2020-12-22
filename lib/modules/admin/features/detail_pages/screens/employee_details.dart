@@ -1,9 +1,12 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
+
+import '../widgets/helper_widgets.dart';
 
 class EmployeeDetails extends StatefulWidget {
   static const routeName = "/EmployeeDetails";

@@ -1,8 +1,10 @@
+///Project Imports
+import '../models/courier_model.dart';
+
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:couriermanagementsystem/modules/admin/features/home/models/admin_model.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
 import 'package:couriermanagementsystem/modules/customer/features/profile/models/customer_model.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 
 List<Admin> dummyadmins = [
   Admin(

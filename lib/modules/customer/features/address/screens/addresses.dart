@@ -1,8 +1,8 @@
-import 'package:couriermanagementsystem/modules/customer/features/address/widgets/address_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///Project Imports
+import '../widgets/address_body.dart';
 
 class MyAddresses extends StatefulWidget {
   static const routeName = "/MyAddresses";

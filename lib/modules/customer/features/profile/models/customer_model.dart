@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'address_model.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
 
 class Customer {
   String uid;

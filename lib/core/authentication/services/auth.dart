@@ -1,16 +1,20 @@
-import 'package:couriermanagementsystem/core/authentication/screens/onboarding_page.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/screens/admin_welcome_page.dart';
-import 'package:couriermanagementsystem/modules/admin/features/home/services/admin_info_services.dart';
-import 'package:couriermanagementsystem/modules/customer/features/home/cust_welcome_page.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
-import 'package:couriermanagementsystem/modules/employee/home/screens/employee_welcome_page.dart';
-import 'package:couriermanagementsystem/modules/employee/home/services/employee_info_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Refer to this for understanding changes after update:
+///Project Imports
+import '../screens/onboarding_page.dart';
+
+import 'package:couriermanagementsystem/modules/customer/features/home/cust_welcome_page.dart';
+import 'package:couriermanagementsystem/modules/employee/home/screens/employee_welcome_page.dart';
+import 'package:couriermanagementsystem/modules/employee/home/services/employee_info_services.dart';
+import 'package:couriermanagementsystem/modules/admin/features/home/screens/admin_welcome_page.dart';
+import 'package:couriermanagementsystem/modules/admin/features/home/services/admin_info_services.dart';
+import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
+
+///References
+// For understanding changes in Firestore after update:
 // https://firebase.flutter.dev/docs/migration/
 // https://firebase.flutter.dev/docs/overview/#initializing-flutterfire
 // https://pub.dev/packages/firebase_auth

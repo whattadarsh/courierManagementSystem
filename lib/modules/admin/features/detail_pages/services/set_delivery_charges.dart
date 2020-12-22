@@ -1,10 +1,11 @@
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+///Project Imports
 import 'courier_editing_services.dart';
+import '../widgets/helper_widgets.dart';
 
 class SetDeliveryCharges extends StatefulWidget {
   static const routeName = "/SetDeliveryDate";

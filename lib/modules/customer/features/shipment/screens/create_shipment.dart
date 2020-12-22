@@ -1,14 +1,17 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/address/widgets/add_new_address.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
+import '../../profile/models/address_model.dart';
+import '../../address/widgets/add_new_address.dart';
+import '../../profile/services/customer_info_services.dart';
 
 class CreateShipment extends StatefulWidget {
   static const routeName = "/CreateShipment";

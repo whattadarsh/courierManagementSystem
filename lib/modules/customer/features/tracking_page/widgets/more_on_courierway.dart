@@ -1,8 +1,10 @@
-import 'package:couriermanagementsystem/modules/customer/features/tracking_page/data/more_features_on_courierway.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import '../data/more_features_on_courierway.dart';
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/shared/common.dart';
 
 class MoreOnCourierWay extends StatefulWidget {
   @override

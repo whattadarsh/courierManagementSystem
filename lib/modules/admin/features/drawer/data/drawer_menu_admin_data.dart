@@ -1,8 +1,11 @@
-import 'package:couriermanagementsystem/core/screens/aboutus.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/assigned_courier.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_couriers.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/available_employees.dart';
 import 'package:flutter/material.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/core/screens/aboutus.dart';
+
+import '../../detail_pages/screens/assigned_courier.dart';
+import '../../detail_pages/screens/available_couriers.dart';
+import '../../detail_pages/screens/available_employees.dart';
 
 List<Map<String, Object>> menuData = [
   {

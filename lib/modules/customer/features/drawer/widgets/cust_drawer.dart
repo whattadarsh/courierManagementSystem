@@ -1,10 +1,12 @@
-import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
-import 'package:couriermanagementsystem/modules/customer/features/drawer/data/drawer_menu_data.dart';
-import 'package:couriermanagementsystem/core/screens/contact_us.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/core/screens/contact_us.dart';
+import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
+
+import '../data/drawer_menu_data.dart';
 
 class DrawerWidget extends StatefulWidget {
   static const routeName = "/DrawerWidget";

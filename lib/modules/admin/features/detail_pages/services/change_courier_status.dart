@@ -1,10 +1,12 @@
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+///Project Imports
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
 import 'courier_editing_services.dart';
+import '../widgets/helper_widgets.dart';
 
 class ChangeCourierStatus extends StatefulWidget {
   final Courier courier;

@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:enum_to_string/enum_to_string.dart';
+
+///Project Imports
 import 'package:couriermanagementsystem/core/models/courier_model.dart';
 import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
-import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter/material.dart';
 
-//CHECKIT: Set methods
+//CHECKIT: All Methods
 class EditCourier with ChangeNotifier {
   Courier _courier;
   DateTime _expectedDeliveryDate;

@@ -1,11 +1,14 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/courier_details.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
 import 'package:provider/provider.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
+import '../../detail_pages/screens/courier_details.dart';
+import '../../detail_pages/services/courier_editing_services.dart';
 
 class CouriersList extends StatefulWidget {
   final String use;

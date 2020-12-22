@@ -1,8 +1,10 @@
-import 'package:couriermanagementsystem/core/authentication/screens/signup_page.dart';
-import 'package:couriermanagementsystem/core/authentication/services/auth.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+
+///Project Imports
+import 'signup_page.dart';
+import '../services/auth.dart';
 
 class Login extends StatefulWidget {
   static const routeName = "/Login";

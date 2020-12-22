@@ -1,13 +1,15 @@
-import 'package:couriermanagementsystem/modules/customer/features/address/services/adding_address_provider.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-///
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/shared/common.dart';
+
+import '../services/adding_address_provider.dart';
+import '../../profile/models/address_model.dart';
+import '../../profile/services/customer_info_services.dart';
+
 class AddNewAddressWidget extends StatefulWidget {
   static const routeName = "./addnewaddress";
 

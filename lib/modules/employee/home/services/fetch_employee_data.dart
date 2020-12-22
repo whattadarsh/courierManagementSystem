@@ -1,8 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'employee_info_services.dart';
+import '../models/employee_model.dart';
 
 ///Method to upload the fields of emp
 Future<void> createEmployee(Employee emp) async {

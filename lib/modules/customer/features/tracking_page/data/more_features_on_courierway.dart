@@ -1,6 +1,8 @@
-import 'package:couriermanagementsystem/core/screens/aboutus.dart';
-import 'package:couriermanagementsystem/modules/customer/features/shipment/screens/create_shipment.dart';
 import 'package:flutter/material.dart';
+
+///Project Imports
+import '../../shipment/screens/create_shipment.dart';
+import 'package:couriermanagementsystem/core/screens/aboutus.dart';
 
 List<Map<String, Object>> moreOnCourierWay = [
   {

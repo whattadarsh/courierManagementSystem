@@ -1,8 +1,8 @@
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
 import 'package:flutter/material.dart';
 
 //Project Imports
 import 'fetch_employee_data.dart';
+import '../models/employee_model.dart';
 
 class EmployeeInfoServices extends ChangeNotifier {
   Employee employeeData;

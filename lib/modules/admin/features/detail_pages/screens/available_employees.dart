@@ -1,6 +1,8 @@
-import 'package:couriermanagementsystem/modules/admin/features/home/widgets/employee_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import '../../home/widgets/employee_list.dart';
 
 class AvailableEmployees extends StatefulWidget {
   static const routeName = "/AvailableEmployees";

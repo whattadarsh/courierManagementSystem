@@ -1,11 +1,11 @@
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/address_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///Project Imports
-
+import '../../profile/models/address_model.dart';
+import '../../profile/services/customer_info_services.dart';
 class AddressList extends StatelessWidget {
   final Function onTap;
   const AddressList({Key key, @required this.onTap}) : super(key: key);

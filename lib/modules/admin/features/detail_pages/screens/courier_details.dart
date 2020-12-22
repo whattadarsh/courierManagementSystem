@@ -1,13 +1,14 @@
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/change_details.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/widgets/helper_widgets.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:enum_to_string/enum_to_string.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///Project Imports
+import 'package:couriermanagementsystem/shared/common.dart';
+
+import '../widgets/helper_widgets.dart';
+import '../widgets/change_details.dart';
+import '../services/courier_editing_services.dart';
 
 class CourierDetails extends StatefulWidget {
   static const routeName = "/CourierDetails";

@@ -1,9 +1,12 @@
-import 'package:couriermanagementsystem/core/data/dummy_data.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/employee_details.dart';
-import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
-import 'package:couriermanagementsystem/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:couriermanagementsystem/core/data/dummy_data.dart';
+import 'package:couriermanagementsystem/modules/employee/home/models/employee_model.dart';
+
+import '../../detail_pages/screens/employee_details.dart';
 
 class EmployeeList extends StatefulWidget {
   final String use;

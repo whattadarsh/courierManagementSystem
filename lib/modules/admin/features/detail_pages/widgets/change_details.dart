@@ -1,12 +1,15 @@
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/assign_delivery_man.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/change_courier_status.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/courier_editing_services.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/set_delivery_charges.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/services/set_delivery_date.dart';
-import 'package:couriermanagementsystem/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/common.dart';
+import 'package:couriermanagementsystem/core/models/courier_model.dart';
+
+import '../services/set_delivery_date.dart';
+import '../services/assign_delivery_man.dart';
+import '../services/set_delivery_charges.dart';
+import '../services/change_courier_status.dart';
+import '../services/courier_editing_services.dart';
 
 void changeCouierDetails(BuildContext context) {
   Courier _courier = Provider.of<EditCourier>(context, listen: false).courier;

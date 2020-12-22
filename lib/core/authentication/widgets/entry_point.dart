@@ -1,7 +1,9 @@
-import 'package:couriermanagementsystem/shared/theme.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+
+///Project Imports
+import 'package:couriermanagementsystem/shared/theme.dart';
 
 class EntryPoint extends StatefulWidget {
   final String title, path, lottiePath;

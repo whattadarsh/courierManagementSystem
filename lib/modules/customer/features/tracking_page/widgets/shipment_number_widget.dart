@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/admin/features/detail_pages/screens/courier_details.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-import 'package:couriermanagementsystem/core/models/courier_model.dart';
+///Project Imports
+import '../../../../../core/models/courier_model.dart';
+import '../../../../../modules/admin/features/detail_pages/screens/courier_details.dart';
 
 class ShipmentNumberWidget extends StatefulWidget {
   @override

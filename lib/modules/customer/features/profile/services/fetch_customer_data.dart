@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/models/customer_model.dart';
-import 'package:couriermanagementsystem/modules/customer/features/profile/services/customer_info_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+///Project Imports
+import '../models/customer_model.dart';
+import '../services/customer_info_services.dart';
 
 ///Method to upload the fields of cust
 Future<void> createCustomer(Customer cust) async {
