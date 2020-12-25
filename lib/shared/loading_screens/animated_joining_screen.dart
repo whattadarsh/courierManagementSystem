@@ -83,16 +83,6 @@ class _AnimatedJoiningScreenState extends State<AnimatedJoiningScreen>
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.w700,
                       color: Colors.black),
-                  // children: [
-                  // TextSpan(
-                  //   text: "\nWait while we are verifying you...",
-                  //   style: TextStyle(
-                  //     fontSize: 12.sp,
-                  //     fontWeight: FontWeight.w700,
-                  //     color: Colors.blueGrey[50],
-                  //   ),
-                  // ),
-                  // ],
                 ),
               ),
             ),
